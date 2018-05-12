@@ -40,7 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Features\Produto.cs" />
+    <Compile Include="Exceptions\NegocioException.cs" />
+    <Compile Include="Features\Produtos\Exceptions\CaracteresMinimoException.cs" />
+    <Compile Include="Features\Produtos\Exceptions\DataDeValidadeInvalidaException.cs" />
+    <Compile Include="Features\Produtos\Exceptions\NomeNuloOuVazioException.cs" />
+    <Compile Include="Features\Produtos\Exceptions\PrecoDeCustoInvalidoException.cs" />
+    <Compile Include="Features\Produtos\Produto.cs" />
+    <Compile Include="Features\Vendas\Exceptions\QuantidadeMenorOuIgualZeroException.cs" />
+    <Compile Include="Features\Vendas\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

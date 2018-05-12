@@ -17,5 +17,17 @@ namespace DonaLaura.Domain
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
        
+
+        public void Validate()
+        {
+            if (string.IsNullOrEmpty(Nome))
+                throw new NomeNuloOuVazioException();
+            if (Nome.Length < 4)
+                throw new CaracteresMinimoException();
+            if (DataValidade < DataFabricacao)
+                throw new DataDeValidadeInvalidaException();
+            if (PrecoCusto > PrecoVenda)
+                throw new PrecoDeCustoInvalidoException();
+        }
     }
 }
