@@ -3,12 +3,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DonaLaura.Application.Tests
 {
-    [TestClass]
-    public class ProdutoServiceTest
-    {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
-    }
+    //[TestFixture]
+    //public class ProdutoServiceTest
+    //{
+    //    [Test]
+    //    public void TestMethod1()
+    //    {
+    //    }
+    //}
 }

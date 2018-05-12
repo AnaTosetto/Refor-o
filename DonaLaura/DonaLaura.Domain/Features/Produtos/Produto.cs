@@ -1,9 +1,6 @@
-﻿using DonaLaura.Domain.Features.Produtos.Exceptions;
+﻿using DonaLaura.Domain.Exceptions;
+using DonaLaura.Domain.Features.Produtos.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DonaLaura.Domain
 {
@@ -28,6 +25,8 @@ namespace DonaLaura.Domain
                 throw new DataDeValidadeInvalidaException();
             if (PrecoCusto > PrecoVenda)
                 throw new PrecoDeCustoInvalidoException();
+            if (DataFabricacao > DateTime.Now)
+                throw new DataDeFabricacaoInvalidaException();
         }
     }
 }

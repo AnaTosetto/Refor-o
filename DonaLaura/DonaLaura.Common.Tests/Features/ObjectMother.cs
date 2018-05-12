@@ -1,11 +1,12 @@
 ﻿using DonaLaura.Domain;
+using DonaLaura.Domain.Features.Vendas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DonaLaura.Common.Tests.Features.Produtos
+namespace DonaLaura.Common.Tests.Features
 {
     public static partial class ObjectMother
     {
@@ -56,7 +57,7 @@ namespace DonaLaura.Common.Tests.Features.Produtos
                 PrecoVenda = 3.45,
                 PrecoCusto = 2.00,
                 Disponibilidade = true,
-                DataFabricacao = DateTime.Now.AddDays(2),
+                DataFabricacao = DateTime.Now,
                 DataValidade = DateTime.Now.AddDays(-3)
             };
         }
@@ -74,5 +75,47 @@ namespace DonaLaura.Common.Tests.Features.Produtos
             };
         }
 
+        public static Produto getDataDeFabricacaoInvalidaProduto()
+        {
+            return new Produto
+            {
+                Nome = "abcd",
+                PrecoVenda = 3.45,
+                PrecoCusto = 2.00,
+                Disponibilidade = true,
+                DataFabricacao = DateTime.Now.AddDays(2),
+                DataValidade = DateTime.Now.AddDays(3)
+            };
+        }
+
+        public static Venda getQuantidadeMenorOuIgualZeroVenda()
+        {
+            return new Venda
+            {
+                NomeCliente = "nome",
+                Quantidade = 0,
+                Lucro = 3.50
+            };
+        }
+
+        public static Venda getNomeNuloOuVazioVenda()
+        {
+            return new Venda
+            {
+                NomeCliente = "",
+                Quantidade = 1,
+                Lucro = 3.50
+            };
+        }
+
+        public static Venda getValidoVenda()
+        {
+            return new Venda
+            {
+                NomeCliente = "nome",
+                Quantidade = 1,
+                Lucro = 3.50
+            };
+        }
     }
 }
