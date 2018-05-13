@@ -52,5 +52,17 @@ namespace DonaLaura.Infra.Data.Tests.Features.Produtos
             //Verify
             produto.Id.Should().Be(produto.Id);
         }
+
+        [Test]
+        public void ProdutoRepository_Atualizar_DeveFalhar()
+        {
+            //Arrange
+            long id = 1;
+            Produto produto = ObjectMother.getValidoProduto();
+            produto.Id = id;
+
+            //Action
+            Produto result = _produtoRepository.Atualizar(produto);
+        }
     }
 }
