@@ -36,7 +36,7 @@ namespace DonaLaura.Aplicacao.Features.Produtos
             _produtoRepository.Excluir(produto);
         }
 
-        public Produto Obtem(int id)
+        public Produto Obtem(long id)
         {
             return _produtoRepository.Obter(id);
         }

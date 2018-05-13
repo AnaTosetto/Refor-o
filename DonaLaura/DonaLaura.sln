@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonaLaura.Comum.Tests", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonaLaura.Aplicacao", "DonaLaura.Aplicacao\DonaLaura.Aplicacao.csproj", "{D0A4B6C5-F380-47AF-83E1-CEC188DF8954}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonaLaura.Infra.Data.Tests", "DonaLaura.Infra.Data.Tests\DonaLaura.Infra.Data.Tests.csproj", "{A533E6C7-F566-476A-84DF-ECCFF9A1698A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{D0A4B6C5-F380-47AF-83E1-CEC188DF8954}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0A4B6C5-F380-47AF-83E1-CEC188DF8954}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0A4B6C5-F380-47AF-83E1-CEC188DF8954}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A533E6C7-F566-476A-84DF-ECCFF9A1698A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A533E6C7-F566-476A-84DF-ECCFF9A1698A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A533E6C7-F566-476A-84DF-ECCFF9A1698A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A533E6C7-F566-476A-84DF-ECCFF9A1698A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{A73C0A21-D2DF-4FDE-88A9-C754B013FACD} = {189590C9-23E0-4F48-9253-1952840CED62}
 		{332B3ECA-1E10-4CF1-9AD4-49566A023DB1} = {189590C9-23E0-4F48-9253-1952840CED62}
 		{D0A4B6C5-F380-47AF-83E1-CEC188DF8954} = {238CBA9E-5EE0-45DD-9C9B-EADAD9740F12}
+		{A533E6C7-F566-476A-84DF-ECCFF9A1698A} = {189590C9-23E0-4F48-9253-1952840CED62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30349D26-A498-4F03-8655-D08797C9EF7A}

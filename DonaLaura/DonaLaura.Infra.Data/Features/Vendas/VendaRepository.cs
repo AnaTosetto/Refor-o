@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DonaLaura.Infra.Data
+namespace DonaLaura.Infra.Data.Features.Vendas
 {
-    public class Class1
+    class VendaRepository
     {
     }
 }

@@ -6,7 +6,7 @@ namespace DonaLaura.Dominio.Features.Produtos
 {
     public class Produto
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public string Nome { get; set; }
         public double PrecoVenda { get; set; }
         public double PrecoCusto { get; set; }

@@ -11,7 +11,7 @@ namespace DonaLaura.Domain.Features
         T Adicionar(T entidade);
         T Atualizar(T entidade);
         void Excluir(T entidade);
-        T Obter(int Id);
+        T Obter(long Id);
         IEnumerable<T> ObterTudo();
     }
 }

@@ -33,7 +33,7 @@ namespace DonaLaura.Aplicacao.Features.Vendas
             _vendaRepository.Excluir(venda);
         }
 
-        public Venda Obtem(int id)
+        public Venda Obtem(long id)
         {
             return _vendaRepository.Obter(id);
         }
