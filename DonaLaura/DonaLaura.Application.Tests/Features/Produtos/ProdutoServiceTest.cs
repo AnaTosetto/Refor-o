@@ -14,7 +14,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NUnit.Framework;
 
-namespace DonaLaura.Application.Tests
+namespace DonaLaura.Aplicacao.Tests.Features.Produtos
 {
     [TestFixture]
     public class ProdutoServiceTest

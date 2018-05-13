@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProdutoService.Features.Vendas
+namespace DonaLaura.Aplicacao.Features.Vendas
 {
     public class VendaService
     {
@@ -18,27 +18,29 @@ namespace ProdutoService.Features.Vendas
 
         public Venda Adiciona(Venda venda)
         {
-            return venda;
+            venda.Validate();
+            return _vendaRepository.Adicionar(venda);
         }
 
         public Venda Atualiza(Venda venda)
         {
-            return venda;
+            venda.Validate();
+            return _vendaRepository.Atualizar(venda);
         }
 
         public void Exclui(Venda venda)
         {
-
+            _vendaRepository.Excluir(venda);
         }
 
         public Venda Obtem(int id)
         {
-            return null;
+            return _vendaRepository.Obter(id);
         }
 
         public IEnumerable<Venda> ObtemTudo()
         {
-            return null;
+            return _vendaRepository.ObterTudo();
         }
     }
 }

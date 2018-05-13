@@ -1,6 +1,10 @@
 ﻿using DonaLaura.Domain.Features.Produtos;
 using DonaLaura.Dominio.Features.Produtos;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace DonaLaura.Aplicacao.Features.Produtos
 {
