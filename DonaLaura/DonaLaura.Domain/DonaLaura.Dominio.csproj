@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\IdentificadorIndefinidoException.cs" />
     <Compile Include="Exceptions\NegocioException.cs" />
     <Compile Include="Exceptions\NomeNuloOuVazioException.cs" />
     <Compile Include="Features\IRepository.cs" />

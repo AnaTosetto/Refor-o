@@ -1,6 +1,6 @@
-﻿create database DonaLaura
+﻿create database DBDonaLaura
 
-use DonaLaura
+use DBDonaLaura
 
 create table Produto(
 Id int primary key identity(1,1) not null,
