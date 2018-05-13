@@ -5,6 +5,7 @@ using NUnit.Framework;
 using DonaLaura.Domain.Features.Produtos.Exceptions;
 using DonaLaura.Domain.Exceptions;
 using DonaLaura.Common.Tests.Features;
+using DonaLaura.Dominio.Features.Produtos;
 
 namespace DonaLaura.Domain.Tests
 {

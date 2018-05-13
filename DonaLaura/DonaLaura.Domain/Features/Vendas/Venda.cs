@@ -1,5 +1,6 @@
 ﻿using DonaLaura.Domain.Exceptions;
 using DonaLaura.Domain.Features.Vendas.Exceptions;
+using DonaLaura.Dominio.Features.Produtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

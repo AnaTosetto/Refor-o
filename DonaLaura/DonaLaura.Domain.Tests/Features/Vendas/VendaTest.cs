@@ -7,6 +7,7 @@ using Moq;
 using System.Collections.Generic;
 using DonaLaura.Common.Tests.Features;
 using DonaLaura.Domain.Exceptions;
+using DonaLaura.Dominio.Features.Produtos;
 
 namespace DonaLaura.Domain.Tests.Features.Vendas
 {

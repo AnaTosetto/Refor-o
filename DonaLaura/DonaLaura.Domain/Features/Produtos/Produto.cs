@@ -2,7 +2,7 @@
 using DonaLaura.Domain.Features.Produtos.Exceptions;
 using System;
 
-namespace DonaLaura.Domain
+namespace DonaLaura.Dominio.Features.Produtos
 {
     public class Produto
     {

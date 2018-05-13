@@ -1,5 +1,7 @@
 ﻿using DonaLaura.Domain;
 using DonaLaura.Domain.Features.Vendas;
+using DonaLaura.Dominio;
+using DonaLaura.Dominio.Features.Produtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

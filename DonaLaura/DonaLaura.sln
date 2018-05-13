@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonaLaura.Infra", "DonaLaur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonaLaura.Infra.Data", "DonaLaura.Infra.Data\DonaLaura.Infra.Data.csproj", "{27A0C011-E048-4454-9380-C69061893DDB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Testes", "5. Testes", "{189590C9-23E0-4F48-9253-1952840CED62}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{189590C9-23E0-4F48-9253-1952840CED62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DonaLaura.Aplicacao.Tests", "DonaLaura.Application.Tests\DonaLaura.Aplicacao.Tests.csproj", "{772E860F-F62C-487C-B8F8-1BA8BB4CD840}"
 EndProject

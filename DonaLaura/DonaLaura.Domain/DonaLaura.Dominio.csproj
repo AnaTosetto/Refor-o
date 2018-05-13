@@ -46,6 +46,7 @@
     <Compile Include="Features\Produtos\Exceptions\DataDeValidadeInvalidaException.cs" />
     <Compile Include="Features\Produtos\Exceptions\DataDeFabricacaoInvalidaException.cs" />
     <Compile Include="Features\Produtos\Exceptions\PrecoDeCustoInvalidoException.cs" />
+    <Compile Include="Features\Produtos\IProdutoRepository.cs" />
     <Compile Include="Features\Produtos\Produto.cs" />
     <Compile Include="Features\Vendas\Exceptions\QuantidadeMenorOuIgualZeroException.cs" />
     <Compile Include="Features\Vendas\Venda.cs" />
