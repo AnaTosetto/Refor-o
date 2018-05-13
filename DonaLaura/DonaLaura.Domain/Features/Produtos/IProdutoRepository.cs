@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace DonaLaura.Domain.Features.Produtos
 {
-    public interface IProdutoRepository
+    public interface IProdutoRepository : IRepository<Produto>
     {
-        Produto Adicionar(Produto produto);
-        Produto Atualizar(Produto produto);
-        void Excluir(Produto produto);
-        Produto Obter(int Id);
-        List<Produto> ObterTudo();
+       
     }
 }

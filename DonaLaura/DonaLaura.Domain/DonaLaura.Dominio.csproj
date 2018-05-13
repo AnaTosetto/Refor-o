@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Exceptions\NegocioException.cs" />
     <Compile Include="Exceptions\NomeNuloOuVazioException.cs" />
+    <Compile Include="Features\IRepository.cs" />
     <Compile Include="Features\Produtos\Exceptions\CaracteresMinimoException.cs" />
     <Compile Include="Features\Produtos\Exceptions\DataDeValidadeInvalidaException.cs" />
     <Compile Include="Features\Produtos\Exceptions\DataDeFabricacaoInvalidaException.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Features\Produtos\IProdutoRepository.cs" />
     <Compile Include="Features\Produtos\Produto.cs" />
     <Compile Include="Features\Vendas\Exceptions\QuantidadeMenorOuIgualZeroException.cs" />
+    <Compile Include="Features\Vendas\IVendaRepository.cs" />
     <Compile Include="Features\Vendas\Venda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

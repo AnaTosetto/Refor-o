@@ -1,12 +1,6 @@
-﻿using DonaLaura.Domain;
-using DonaLaura.Domain.Features.Produtos;
-using DonaLaura.Dominio;
+﻿using DonaLaura.Domain.Features.Produtos;
 using DonaLaura.Dominio.Features.Produtos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DonaLaura.Aplicacao.Features.Produtos
 {
@@ -43,9 +37,9 @@ namespace DonaLaura.Aplicacao.Features.Produtos
             return _produtoRepository.Obter(id);
         }
 
-        public List<Produto> ObtemTudo()
+        public IEnumerable<Produto> ObtemTudo()
         {
-            return null;
+            return _produtoRepository.ObterTudo();
         }
     }
 }

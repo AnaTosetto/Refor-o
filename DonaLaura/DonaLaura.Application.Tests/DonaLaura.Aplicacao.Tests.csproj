@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="ProdutoServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VendaServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

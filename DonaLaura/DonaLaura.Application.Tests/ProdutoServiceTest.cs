@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using DonaLaura.Aplicacao.Features.Produtos;
 using DonaLaura.Common.Tests.Features;
 using DonaLaura.Domain.Exceptions;
@@ -159,6 +162,21 @@ namespace DonaLaura.Application.Tests
 
             retorno.Should().NotBeNull();
             retorno.Id.Should().BeGreaterThan(0);
+        }
+
+        [Test]
+        public void ProdutoService_ObtemTudo_ProdutoValido_DeveRetornarOk()
+        {
+            _mockProdutoRepository.Setup(rp => rp.ObterTudo()).Returns(Enumerable.Empty<Produto>);
+            IEnumerable<Produto> retorno = _produtoService.ObtemTudo();
+
+            foreach(Produto produto in retorno)
+            {
+                produto.Id.Should().BeGreaterThan(0);
+                produto.Should().NotBeNull();
+            }
+
+            _mockProdutoRepository.Verify(rp => rp.ObterTudo());
         }
     }
 }
