@@ -1,5 +1,7 @@
 ﻿using DonaLaura.Aplicacao.Features.Produtos;
 using DonaLaura.Common.Tests.Features;
+using DonaLaura.Domain.Exceptions;
+using DonaLaura.Domain.Features.Produtos.Exceptions;
 using DonaLaura.Dominio.Features.Produtos;
 using DonaLaura.Infra.Data.Features.Produtos;
 using FluentAssertions;
@@ -31,7 +33,7 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
             Produto produto = ObjectMother.getValidoProduto();
             produto.Id = 0;
 
-            //IEnumerable<Produto> timelineAntes = _produtoService.ObtemTudo();
+            IEnumerable<Produto> timelineAntes = _produtoService.ObtemTudo();
 
             //Action
             Produto produtoResultado = _produtoService.Adiciona(produto);
@@ -39,27 +41,97 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
             //Verify
             produtoResultado.Should().NotBeNull();
             produtoResultado.Id.Should().BeGreaterThan(0);
-            //produtoResultado.Nome.Should().Be(produto.Nome);
-            //produtoResultado.Disponibilidade.Should().Be(produto.Disponibilidade);
-            //produtoResultado.PrecoCusto.Should().Be(produto.PrecoCusto);
-            //produtoResultado.PrecoVenda.Should().Be(produto.PrecoVenda);
-            //produtoResultado.DataFabricacao.Should().BeBefore(DateTime.Now);
-            //produtoResultado.DataValidade.Should().BeBefore(DateTime.Now.AddDays(2));
+            produtoResultado.Nome.Should().Be(produto.Nome);
+            produtoResultado.Disponibilidade.Should().Be(produto.Disponibilidade);
+            produtoResultado.PrecoCusto.Should().Be(produto.PrecoCusto);
+            produtoResultado.PrecoVenda.Should().Be(produto.PrecoVenda);
+            produtoResultado.DataFabricacao.Should().BeBefore(DateTime.Now);
+            produtoResultado.DataValidade.Should().BeBefore(DateTime.Now.AddDays(3));
 
-            //Produto produtoGet = _produtoService.Obtem(produtoResultado.Id);
+            Produto produtoGet = _produtoService.Obtem(produtoResultado.Id);
 
-            //produtoResultado.Id.Should().Be(produtoGet.Id);
+            produtoResultado.Id.Should().Be(produtoGet.Id);
 
-            //IEnumerable<Produto> timelineDepois = _produtoService.ObtemTudo();
+            IEnumerable<Produto> timelineDepois = _produtoService.ObtemTudo();
 
-            //timelineDepois.Should().NotBeEmpty();
-            //timelineDepois.Count().Should().BeGreaterThan(timelineAntes.Count());
+            timelineDepois.Should().NotBeEmpty();
+            timelineDepois.Count().Should().BeGreaterThan(timelineAntes.Count());
 
             _produtoService.Exclui(produtoResultado);
         }
 
         [Test]
-        public void ProdutoSistemIntegracao_Atualizar_DeveRetornarOk()
+        public void ProdutoSistemaIntegracao_Adicionar_NomeNuloOuVazio_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getNuloOuVazioNomeProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Adiciona(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<NomeNuloOuVazioException>();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Adicionar_CaracteresMinimo_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getCaracteresMinimoNomeProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Adiciona(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<CaracteresMinimoException>();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Adicionar_PrecoCustoInvalido_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getPrecoDeCustoInvalidoProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Adiciona(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<PrecoDeCustoInvalidoException>();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Adicionar_DataDeFabricacaoInvalida_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getDataDeFabricacaoInvalidaProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Adiciona(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<DataDeFabricacaoInvalidaException>();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Adicionar_DataDeValidadeInvalida_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getDataDeValidadeInvalidaProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Adiciona(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<DataDeValidadeInvalidaException>();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Atualizar_DeveRetornarOk()
         {
             //Arrange
             Produto produtoParaEditar = _produtoService.Obtem(1);
