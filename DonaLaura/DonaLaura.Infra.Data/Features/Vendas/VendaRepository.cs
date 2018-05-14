@@ -1,4 +1,5 @@
-﻿using DonaLaura.Domain.Features.Vendas;
+﻿using DonaLaura.Domain.Exceptions;
+using DonaLaura.Domain.Features.Vendas;
 using DonaLaura.Dominio.Features.Produtos;
 using System;
 using System.Collections.Generic;
@@ -44,24 +45,46 @@ namespace DonaLaura.Infra.Data.Features.Vendas
             return venda;
         }
 
-        public Venda Atualizar(Venda entidade)
+        public Venda Atualizar(Venda venda)
         {
-            throw new NotImplementedException();
+            if (venda.Id > 0)
+            {
+                Db.Update(_sqlUpdate, Take(venda));
+                return venda;
+            }
+            else
+            {
+                throw new IdentificadorIndefinidoException();
+            }
         }
 
-        public void Excluir(Venda entidade)
+        public void Excluir(Venda venda)
         {
-            throw new NotImplementedException();
+            if(venda.Id > 0)
+            {
+                Db.Delete(_sqlDelete, Take(venda));
+            }
+            else
+            {
+                throw new IdentificadorIndefinidoException();
+            }
         }
 
         public Venda Obter(long Id)
         {
-            throw new NotImplementedException();
+            if(Id > 0)
+            {
+                return Db.Get<Venda>(_sqlGet, Make, new object[] { "@Id", Id });
+            }
+            else
+            {
+                throw new IdentificadorIndefinidoException();
+            }
         }
 
         public IEnumerable<Venda> ObterTudo()
         {
-            throw new NotImplementedException();
+            return Db.GetAll<Venda>(_sqlGetAll, Make);
         }
 
         private object[] Take(Venda venda)
@@ -72,7 +95,7 @@ namespace DonaLaura.Infra.Data.Features.Vendas
                 "@NomeCliente", venda.NomeCliente,
                 "@Quantidade", venda.Quantidade,
                 "@Lucro", venda.Lucro,
-                "@ProdutoId", venda.Produto
+                "@ProdutoId", venda.Produto.Id
             };
         }
 
