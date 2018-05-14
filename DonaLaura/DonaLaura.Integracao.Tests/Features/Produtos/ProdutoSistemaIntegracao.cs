@@ -154,6 +154,20 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         }
 
         [Test]
+        public void ProdutoSistemaIntegracao_Atualizar_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getValidoProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Atualiza(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
+        }
+
+        [Test]
         public void ProdutoSistemaIntegracao_Excluir_DeveRetornarOk()
         {
             //Arrange
@@ -171,6 +185,20 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         }
 
         [Test]
+        public void ProdutoSistemaIntegracao_Excluir_DeveRetornarExcecao()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getValidoProduto();
+            produto.Id = 0;
+
+            //Action
+            Action acaoResultado = () => _produtoService.Exclui(produto);
+
+            //Verify
+            acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
+        }
+
+        [Test]
         public void ProdutoSistemaIntegracao_Obter_DeveRetornarOk()
         {
             //Arrange
@@ -183,6 +211,16 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
             //Verify
             produto.Id.Should().Be(1);
             produto.Should().NotBeNull();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Obter_DeveRetornarExcecao()
+        {
+            //Action
+            Produto produtoResultado = _produtoService.Obtem(9999999999999);
+
+            //Verify
+            produtoResultado.Should().BeNull();
         }
 
         [Test]
