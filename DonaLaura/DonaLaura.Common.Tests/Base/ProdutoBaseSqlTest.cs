@@ -10,9 +10,7 @@ namespace DonaLaura.Common.Tests.Base
     public static class ProdutoBaseSqlTest
     {
         private const string RECREATE_PRODUTO_TABLE =
-            "TRUNCATE TABLE Venda;" +
-            "TRUNCATE TABLE Produto;";
-
+          "TRUNCATE TABLE Venda; DELETE FROM Produto DBCC CHECKIDENT('DBDonaLaura.dbo.Produto', RESEED, 0)";
 
         private const string INSERT_PRODUTO = "INSERT INTO Produto(Nome, Disponibilidade, PrecoVenda, PrecoCusto, DataFabricacao, DataValidade) VALUES ('Repolho', 1, 4.00, 3.40, GETDATE(), GETDATE())";
 

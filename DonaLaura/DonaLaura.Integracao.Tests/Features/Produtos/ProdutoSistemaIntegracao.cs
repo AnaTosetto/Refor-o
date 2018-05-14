@@ -57,5 +57,74 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
 
             _produtoService.Exclui(produtoResultado);
         }
+
+        [Test]
+        public void ProdutoSistemIntegracao_Atualizar_DeveRetornarOk()
+        {
+            //Arrange
+            Produto produtoParaEditar = _produtoService.Obtem(1);
+            string produtoVelho = produtoParaEditar.Nome;
+            string produtoNovo = "Produto";
+
+            if(produtoVelho == produtoNovo)
+            {
+                produtoNovo = "Novo Produto";
+            }
+
+            produtoParaEditar.Nome = produtoNovo;
+
+            //Action
+            Produto produtoResultado = _produtoService.Atualiza(produtoParaEditar);
+
+            //Verify
+            produtoResultado.Nome.Should().NotBe(produtoVelho);
+            produtoResultado.Id.Should().Be(produtoParaEditar.Id);
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Excluir_DeveRetornarOk()
+        {
+            //Arrange
+            Produto produto = ObjectMother.getValidoProduto();
+            produto.Id = 0;
+
+            produto = _produtoService.Adiciona(produto);
+
+            //Action
+            _produtoService.Exclui(produto);
+
+            //Verify
+            Produto produtoInexistente = _produtoService.Obtem(produto.Id);
+            produtoInexistente.Should().BeNull();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_Obter_DeveRetornarOk()
+        {
+            //Arrange
+            Produto produto = new Produto();
+            produto.Id = 1;
+
+            //Action
+            produto = _produtoService.Obtem(produto.Id);
+
+            //Verify
+            produto.Id.Should().Be(1);
+            produto.Should().NotBeNull();
+        }
+
+        [Test]
+        public void ProdutoSistemaIntegracao_ObterTudo_DeveRetornarOk()
+        {
+            //Arrange
+            IEnumerable<Produto> listaProduto;
+
+            //Action
+            listaProduto = _produtoService.ObtemTudo();
+
+            //Verify
+            listaProduto.Should().NotBeNull();
+            listaProduto.Count().Should().BeGreaterOrEqualTo(0);
+        }
     }
 }
