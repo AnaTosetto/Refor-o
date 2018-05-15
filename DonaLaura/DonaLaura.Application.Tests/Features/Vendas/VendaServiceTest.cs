@@ -37,7 +37,7 @@ namespace DonaLaura.Application.Tests.Features.Vendas
             venda.Id = 0;
 
             //Ação
-            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Lucro = 3.50, Quantidade = 2 });
+            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
             Venda retorno = _vendaService.Adiciona(venda);
 
             //Verificar
@@ -56,7 +56,7 @@ namespace DonaLaura.Application.Tests.Features.Vendas
             venda.Id = 0;
 
             //Ação
-            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Lucro = 3.50, Quantidade = 2 });
+            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
 
             Action acaoRetorno = () => _vendaService.Adiciona(venda);
 
@@ -74,7 +74,7 @@ namespace DonaLaura.Application.Tests.Features.Vendas
             venda.Id = 0;
 
             //Ação
-            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Lucro = 3.50, Quantidade = 2 });
+            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
 
             Action acaoRetorno = () => _vendaService.Adiciona(venda);
 
@@ -92,7 +92,7 @@ namespace DonaLaura.Application.Tests.Features.Vendas
             venda.Id = 1;
 
             //Ação
-            _mockVendaRepository.Setup(rp => rp.Atualizar(venda)).Returns(new Venda { Id = venda.Id, NomeCliente = "nome", Produto = _mockProduto.Object, Lucro = 3.50, Quantidade = 2 });
+            _mockVendaRepository.Setup(rp => rp.Atualizar(venda)).Returns(new Venda { Id = venda.Id, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
             Venda retorno = _vendaService.Atualiza(venda);
 
             //Verificar
@@ -125,7 +125,7 @@ namespace DonaLaura.Application.Tests.Features.Vendas
             venda.Id = 1;
 
             //Ação
-            _mockVendaRepository.Setup(rp => rp.Obter(venda.Id)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Lucro = 3.50, Quantidade = 2 });
+            _mockVendaRepository.Setup(rp => rp.Obter(venda.Id)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
             Venda retorno = _vendaService.Obtem(venda.Id);
 
             //Verificar

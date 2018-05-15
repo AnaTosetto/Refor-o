@@ -11,7 +11,7 @@ namespace DonaLaura.Common.Tests.Features.Vendas
             {
                 NomeCliente = "nome",
                 Quantidade = 0,
-                Lucro = 3.50,
+                //Lucro = 3.50,
                 Produto = produto
             };
         }
@@ -22,7 +22,7 @@ namespace DonaLaura.Common.Tests.Features.Vendas
             {
                 NomeCliente = "",
                 Quantidade = 1,
-                Lucro = 3.50,
+                //Lucro = 3.50,
                 Produto = produto
             };
         }
@@ -33,7 +33,7 @@ namespace DonaLaura.Common.Tests.Features.Vendas
             {
                 NomeCliente = "nome",
                 Quantidade = 1,
-                Lucro = 3.50,
+                //Lucro = 3.50,
                 Produto = produto
             };
         }

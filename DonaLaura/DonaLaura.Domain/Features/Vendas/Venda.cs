@@ -19,7 +19,7 @@ namespace DonaLaura.Domain.Features.Vendas
         {
             get
             {
-                return PrecoVenda() - PrecoCusto();
+                return CalcularLucro();
             }
         }
 
@@ -31,14 +31,9 @@ namespace DonaLaura.Domain.Features.Vendas
                 throw new NomeNuloOuVazioException();
         }
 
-        public double PrecoVenda()
+        public double CalcularLucro()
         {
-            return Quantidade * Produto.PrecoVenda;
-        }
-
-        public double PrecoCusto()
-        {
-            return Quantidade * Produto.PrecoCusto;
+            return ((Produto.PrecoVenda - Produto.PrecoCusto) * Quantidade);
         }
     }
 }

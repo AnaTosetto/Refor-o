@@ -105,7 +105,7 @@ namespace DonaLaura.Infra.Data.Features.Vendas
             Id = Convert.ToInt64(reader["Id"]),
             NomeCliente = reader["NomeCliente"].ToString(),
             Quantidade = Convert.ToInt32(reader["Quantidade"]),
-            Lucro = Convert.ToDouble(reader["Lucro"]),
+            //Lucro = Convert.ToDouble(reader["Lucro"]),
             Produto = new Produto
             {
                 Id = Convert.ToInt64(reader["ProdutoId"]),

@@ -135,6 +135,7 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         {
             //Cenário
             Produto produtoParaEditar = _produtoService.Obtem(1);
+            produtoParaEditar.Id = 1;
             string produtoVelho = produtoParaEditar.Nome;
             string produtoNovo = "Produto";
 
@@ -201,12 +202,8 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         [Test]
         public void ProdutoSistemaIntegracao_Obter_DeveRetornarOk()
         {
-            //Cenário
-            Produto produto = new Produto();
-            produto.Id = 1;
-
             //Acão
-            produto = _produtoService.Obtem(produto.Id);
+            Produto produto = _produtoService.Obtem(1);
 
             //Verificar
             produto.Id.Should().Be(1);

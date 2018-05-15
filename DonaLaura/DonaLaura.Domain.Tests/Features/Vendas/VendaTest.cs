@@ -62,5 +62,18 @@ namespace DonaLaura.Domain.Tests.Features.Vendas
             //Verificar
             action.Should().NotThrow();
         }
+
+        [Test]
+        public void Venda_DeveSerValido_Lucro()
+        {
+            Venda venda = new Venda();
+            _mockProduto.Setup(precoCusto => precoCusto.PrecoCusto).Returns(2);
+            _mockProduto.Setup(precoVenda => precoVenda.PrecoVenda).Returns(4);
+            venda.Quantidade = 3;
+
+            //double lucro = 6;
+
+            venda.Lucro.Should().Be(6);
+        }
     }
 }
