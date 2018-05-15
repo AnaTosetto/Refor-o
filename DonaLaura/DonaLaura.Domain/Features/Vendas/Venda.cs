@@ -15,7 +15,13 @@ namespace DonaLaura.Domain.Features.Vendas
         public Produto Produto { get; set; }
         public string NomeCliente { get; set; }
         public int Quantidade { get; set; }
-        public double Lucro { get; set; }   
+        public double Lucro
+        {
+            get
+            {
+                return PrecoVenda() - PrecoCusto();
+            }
+        }
 
         public void Validate()
         {
@@ -23,6 +29,16 @@ namespace DonaLaura.Domain.Features.Vendas
                 throw new QuantidadeMenorOuIgualZeroException();
             if (string.IsNullOrEmpty(NomeCliente))
                 throw new NomeNuloOuVazioException();
+        }
+
+        public double PrecoVenda()
+        {
+            return Quantidade * Produto.PrecoVenda;
+        }
+
+        public double PrecoCusto()
+        {
+            return Quantidade * Produto.PrecoCusto;
         }
     }
 }

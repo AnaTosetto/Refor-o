@@ -1,5 +1,5 @@
 ﻿using DonaLaura.Aplicacao.Features.Produtos;
-using DonaLaura.Common.Tests.Features;
+using DonaLaura.Common.Tests.Features.Produtos;
 using DonaLaura.Domain.Exceptions;
 using DonaLaura.Domain.Features.Produtos.Exceptions;
 using DonaLaura.Dominio.Features.Produtos;
@@ -29,16 +29,16 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         [Test]
         public void ProdutoSistemaIntegracao_Adiciona_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getValidoProduto();
             produto.Id = 0;
 
             IEnumerable<Produto> timelineAntes = _produtoService.ObtemTudo();
 
-            //Action
+            //Acão
             Produto produtoResultado = _produtoService.Adiciona(produto);
 
-            //Verify
+            //Verificar
             produtoResultado.Should().NotBeNull();
             produtoResultado.Id.Should().BeGreaterThan(0);
             produtoResultado.Nome.Should().Be(produto.Nome);
@@ -63,77 +63,77 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         [Test]
         public void ProdutoSistemaIntegracao_Adicionar_NomeNuloOuVazio_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getNuloOuVazioNomeProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Adiciona(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<NomeNuloOuVazioException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Adicionar_CaracteresMinimo_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getCaracteresMinimoNomeProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Adiciona(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<CaracteresMinimoException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Adicionar_PrecoCustoInvalido_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getPrecoDeCustoInvalidoProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Adiciona(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<PrecoDeCustoInvalidoException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Adicionar_DataDeFabricacaoInvalida_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getDataDeFabricacaoInvalidaProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Adiciona(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<DataDeFabricacaoInvalidaException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Adicionar_DataDeValidadeInvalida_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getDataDeValidadeInvalidaProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Adiciona(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<DataDeValidadeInvalidaException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Atualizar_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produtoParaEditar = _produtoService.Obtem(1);
             string produtoVelho = produtoParaEditar.Nome;
             string produtoNovo = "Produto";
@@ -145,10 +145,10 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
 
             produtoParaEditar.Nome = produtoNovo;
 
-            //Action
+            //Acão
             Produto produtoResultado = _produtoService.Atualiza(produtoParaEditar);
 
-            //Verify
+            //Verificar
             produtoResultado.Nome.Should().NotBe(produtoVelho);
             produtoResultado.Id.Should().Be(produtoParaEditar.Id);
         }
@@ -156,30 +156,30 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         [Test]
         public void ProdutoSistemaIntegracao_Atualizar_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getValidoProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Atualiza(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Excluir_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getValidoProduto();
             produto.Id = 0;
 
             produto = _produtoService.Adiciona(produto);
 
-            //Action
+            //Acão
             _produtoService.Exclui(produto);
 
-            //Verify
+            //Verificar
             Produto produtoInexistente = _produtoService.Obtem(produto.Id);
             produtoInexistente.Should().BeNull();
         }
@@ -187,28 +187,28 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         [Test]
         public void ProdutoSistemaIntegracao_Excluir_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = ObjectMother.getValidoProduto();
             produto.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _produtoService.Exclui(produto);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_Obter_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             produto.Id = 1;
 
-            //Action
+            //Acão
             produto = _produtoService.Obtem(produto.Id);
 
-            //Verify
+            //Verificar
             produto.Id.Should().Be(1);
             produto.Should().NotBeNull();
         }
@@ -216,23 +216,23 @@ namespace DonaLaura.Integracao.Tests.Features.Produtos
         [Test]
         public void ProdutoSistemaIntegracao_Obter_DeveRetornarExcecao()
         {
-            //Action
+            //Acão
             Produto produtoResultado = _produtoService.Obtem(9999999999999);
 
-            //Verify
+            //Verificar
             produtoResultado.Should().BeNull();
         }
 
         [Test]
         public void ProdutoSistemaIntegracao_ObterTudo_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             IEnumerable<Produto> listaProduto;
 
-            //Action
+            //Acão
             listaProduto = _produtoService.ObtemTudo();
 
-            //Verify
+            //Verificar
             listaProduto.Should().NotBeNull();
             listaProduto.Count().Should().BeGreaterOrEqualTo(0);
         }

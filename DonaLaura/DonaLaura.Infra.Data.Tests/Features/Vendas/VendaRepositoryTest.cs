@@ -1,5 +1,5 @@
 ﻿using DonaLaura.Common.Tests.Base;
-using DonaLaura.Common.Tests.Features;
+using DonaLaura.Common.Tests.Features.Vendas;
 using DonaLaura.Domain.Exceptions;
 using DonaLaura.Domain.Features.Vendas;
 using DonaLaura.Dominio.Features.Produtos;
@@ -9,8 +9,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DonaLaura.Infra.Data.Tests.Features.Vendas
 {
@@ -28,130 +26,130 @@ namespace DonaLaura.Infra.Data.Tests.Features.Vendas
         [Test]
         public void VendaRepository_Adicionar_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
             long id = 0;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = id;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             venda = _vendaRepository.Adicionar(venda);
 
-            //Verify
+            //Verificar
             venda.Id.Should().BeGreaterThan(0);
         }
 
         [Test]
         public void VendaRepository_Atualizar_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
             long id = 1;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = id;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             venda = _vendaRepository.Atualizar(venda);
 
-            //Verify
+            //Verificar
             venda.Id.Should().Be(venda.Id);
         }
 
         [Test]
         public void VendaRepository_Atualizar_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
             long id = 0;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = id;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaRepository.Atualizar(venda);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void VendaRepository_Excluir_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
             long id = 1;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = id;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             _vendaRepository.Excluir(venda);
         }
 
         [Test]
         public void VendaRepository_Excluir_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
             long id = 0;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = id;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaRepository.Excluir(venda);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void VendaRepository_Obter_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Venda venda = new Venda();
             venda.Id = 1;
 
-            //Action
+            //Acão
             venda = _vendaRepository.Obter(venda.Id);
         }
 
         [Test]
         public void VendaRepository_Obter_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Venda venda = new Venda();
             venda.Id = 0;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaRepository.Obter(venda.Id);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void VendaRepository_ObterTudo_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             IEnumerable<Venda> listaVenda;
 
-            //Action
+            //Acão
             listaVenda = _vendaRepository.ObterTudo();
 
-            //Verify
+            //Verificar
             listaVenda.Should().NotBeNull();
             listaVenda.First<Venda>().Id.Should().Be(1);
 

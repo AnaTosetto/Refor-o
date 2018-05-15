@@ -1,5 +1,5 @@
 ﻿using DonaLaura.Aplicacao.Features.Vendas;
-using DonaLaura.Common.Tests.Features;
+using DonaLaura.Common.Tests.Features.Vendas;
 using DonaLaura.Domain.Exceptions;
 using DonaLaura.Domain.Features.Vendas;
 using DonaLaura.Domain.Features.Vendas.Exceptions;
@@ -10,8 +10,6 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DonaLaura.Integracao.Tests.Features.Vendas
 {
@@ -30,20 +28,20 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         [Test]
         public void VendaSistemaIntegracao_Adicionar_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário 
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
 
             IEnumerable<Venda> timelineAntes = _vendaService.ObtemTudo();
 
-            //Action
+            //Acão
             Venda vendaResultado = _vendaService.Adiciona(venda);
 
-            //Verify
+            //Verificar
             vendaResultado.Should().NotBeNull();
             vendaResultado.Id.Should().BeGreaterThan(0);
             vendaResultado.NomeCliente.Should().Be(venda.NomeCliente);
@@ -66,43 +64,43 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         [Test]
         public void VendaSistemaIntegracao_Adicionar_NomeNuloOuVazio_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
-            Venda venda = ObjectMother.getNomeNuloOuVazioVenda();
+            Venda venda = ObjectMother.getNomeNuloOuVazioVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaService.Adiciona(venda);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<NomeNuloOuVazioException>();
         }
 
         [Test]
         public void VendaSistemaIntegracao_Adicionar_QuantidadeMenorOuIgualZero_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
-            Venda venda = ObjectMother.getQuantidadeMenorOuIgualZeroVenda();
+            Venda venda = ObjectMother.getQuantidadeMenorOuIgualZeroVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaService.Adiciona(venda);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<QuantidadeMenorOuIgualZeroException>();
         }
 
         [Test]
         public void VendaSistemaIntegracao_Atualizar_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Venda vendaParaEditar = _vendaService.Obtem(1);
             string vendaVelha = vendaParaEditar.NomeCliente;
             string novaVenda = "Venda";
@@ -114,10 +112,10 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
 
             vendaParaEditar.NomeCliente = novaVenda;
 
-            //Action
+            //Acão
             Venda vendaResultado = _vendaService.Atualiza(vendaParaEditar);
 
-            //Verify
+            //Verificar
             vendaResultado.NomeCliente.Should().NotBe(vendaVelha);
             vendaResultado.Id.Should().Be(vendaParaEditar.Id);
         }
@@ -125,39 +123,39 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         [Test]
         public void VendaSistemaIntegracao_Atualizar_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaService.Atualiza(venda);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void VendaSistemaIntegracao_Excluir_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
             
 
             venda = _vendaService.Adiciona(venda);
 
-            //Action
+            //Acão
             _vendaService.Exclui(venda);
 
-            //Verify
+            //Verificar
             Venda vendaInexistente = _vendaService.Obtem(venda.Id);
             vendaInexistente.Should().BeNull();
         }
@@ -165,32 +163,32 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         [Test]
         public void VendaSistemaIntegracao_Excluir_DeveRetornarExcecao()
         {
-            //Arrange
+            //Cenário
             Produto produto = new Produto();
             long idProduto = 1;
             produto.Id = idProduto;
-            Venda venda = ObjectMother.getValidoVenda();
+            Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
 
-            //Action
+            //Acão
             Action acaoResultado = () => _vendaService.Exclui(venda);
 
-            //Verify
+            //Verificar
             acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
         public void VendaSistemaIntegracao_Obter_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             Venda venda = new Venda();
             venda.Id = 1;
 
-            //Action
+            //Acão
             venda = _vendaService.Obtem(venda.Id);
 
-            //Verify
+            //Verificar
             venda.Id.Should().Be(1);
             venda.Should().NotBeNull();
         }
@@ -198,23 +196,23 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         [Test]
         public void VendaSistemaIntegracao_Obter_DeveRetornarExcecao()
         {
-            //Action
+            //Acão
             Venda vendaResultado = _vendaService.Obtem(9999999999999);
 
-            //Verify
+            //Verificar
             vendaResultado.Should().BeNull();
         }
 
         [Test]
         public void VendaSistemaIntegracao_ObterTudo_DeveRetornarOk()
         {
-            //Arrange
+            //Cenário
             IEnumerable<Venda> listaVenda;
 
-            //Action
+            //Acão
             listaVenda = _vendaService.ObtemTudo();
 
-            //Verify
+            //Verificar
             listaVenda.Should().NotBeNull();
             listaVenda.Count().Should().BeGreaterOrEqualTo(0);
         }

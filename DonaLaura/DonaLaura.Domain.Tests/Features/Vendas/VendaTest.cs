@@ -4,8 +4,7 @@ using FluentAssertions;
 using NUnit.Framework;
 using System;
 using Moq;
-using System.Collections.Generic;
-using DonaLaura.Common.Tests.Features;
+using DonaLaura.Common.Tests.Features.Vendas;
 using DonaLaura.Domain.Exceptions;
 using DonaLaura.Dominio.Features.Produtos;
 
@@ -25,48 +24,42 @@ namespace DonaLaura.Domain.Tests.Features.Vendas
         [Test]
         public void Venda_QuantidadeMenorOuIgualZero_DeveRetornarExcecao()
         {
-            //Arrange
-            Produto produto = new Produto();
-            Venda venda = ObjectMother.getQuantidadeMenorOuIgualZeroVenda();
+            //Cenário
+            Venda venda = ObjectMother.getQuantidadeMenorOuIgualZeroVenda(_mockProduto.Object);
             venda.Id = 1;
-            venda.Produto = produto;
 
-            //Action
+            //Acão
             Action action = () => venda.Validate();
 
-            //Verify
+            //Verificar
             action.Should().Throw<QuantidadeMenorOuIgualZeroException>();
         }
 
         [Test]
         public void Venda_NomeNuloOuVazio_DeveRetornarExcecao()
         {
-            //Arrange
-            Produto produto = new Produto();
-            Venda venda = ObjectMother.getNomeNuloOuVazioVenda();
+            //Cenário
+            Venda venda = ObjectMother.getNomeNuloOuVazioVenda(_mockProduto.Object);
             venda.Id = 1;
-            venda.Produto = produto;
 
-            //Action
+            //Acão
             Action action = () => venda.Validate();
 
-            //Verify
+            //Verificar
             action.Should().Throw<NomeNuloOuVazioException>();
         }
 
         [Test]
         public void Venda_DeveSerValido()
         {
-            //Arrange
-            Produto produto = new Produto();
-            Venda venda = ObjectMother.getValidoVenda();
+            //Cenário
+            Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
             venda.Id = 1;
-            venda.Produto = produto;
 
-            //Action
+            //Acão
             Action action = () => venda.Validate();
 
-            //Verify
+            //Verificar
             action.Should().NotThrow();
         }
     }
