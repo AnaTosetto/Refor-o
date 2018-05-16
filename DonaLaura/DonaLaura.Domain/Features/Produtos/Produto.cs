@@ -7,12 +7,12 @@ namespace DonaLaura.Dominio.Features.Produtos
     public class Produto
     {
         public long Id { get; set; }
-        public string Nome { get; set; }
-        public double PrecoVenda { get; set; }
-        public double PrecoCusto { get; set; }
-        public bool Disponibilidade { get; set; }
-        public DateTime DataFabricacao { get; set; }
-        public DateTime DataValidade { get; set; }
+        public virtual string Nome { get; set; }
+        public virtual double PrecoVenda { get; set; }
+        public virtual double PrecoCusto { get; set; }
+        public virtual bool Disponibilidade { get; set; }
+        public virtual DateTime DataFabricacao { get; set; }
+        public virtual DateTime DataValidade { get; set; }
        
 
         public void Validate()

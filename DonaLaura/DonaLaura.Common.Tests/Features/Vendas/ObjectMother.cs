@@ -7,7 +7,7 @@ namespace DonaLaura.Common.Tests.Features.Vendas
     {
         public static Venda getQuantidadeMenorOuIgualZeroVenda(Produto produto)
         {
-            return new Venda
+            return new Venda()
             {
                 NomeCliente = "nome",
                 Quantidade = 0,
@@ -18,7 +18,7 @@ namespace DonaLaura.Common.Tests.Features.Vendas
 
         public static Venda getNomeNuloOuVazioVenda(Produto produto)
         {
-            return new Venda
+            return new Venda()
             {
                 NomeCliente = "",
                 Quantidade = 1,
@@ -29,7 +29,7 @@ namespace DonaLaura.Common.Tests.Features.Vendas
 
         public static Venda getValidoVenda(Produto produto)
         {
-            return new Venda
+            return new Venda()
             {
                 NomeCliente = "nome",
                 Quantidade = 1,

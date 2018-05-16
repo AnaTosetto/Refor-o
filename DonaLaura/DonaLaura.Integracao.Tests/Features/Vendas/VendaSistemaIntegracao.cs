@@ -30,11 +30,14 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         {
             //Cenário 
             Produto produto = new Produto();
-            long idProduto = 1;
-            produto.Id = idProduto;
+            produto.Id = 1;
+            produto.Disponibilidade = true;
+            produto.DataValidade = DateTime.Now.AddDays(2);
             Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
+
+
 
             IEnumerable<Venda> timelineAntes = _vendaService.ObtemTudo();
 
@@ -98,11 +101,50 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         }
 
         [Test]
+        public void VendaSistemaIntegracao_Adicionar_ProdutoIndisponivelNoEstoque_DeveRetornarExcecao()
+        {
+            //Cenário
+            Produto produto = new Produto();
+            produto.Id = 1;
+            produto.Disponibilidade = false;
+            Venda venda = ObjectMother.getValidoVenda(produto);
+            venda.Id = 0;
+            venda.Produto = produto;
+
+            //Acão
+            Action acaoResultado = () => _vendaService.Adiciona(venda);
+
+            //Verificar
+            acaoResultado.Should().Throw<ProdutoIndisponivelEmEstoqueException>();
+        }
+
+        [Test]
+        public void VendaSistemaIntegracao_Adicionar_ProdutoForaDaDataDeValidade_DeveRetornarExcecao()
+        {
+            //Cenário
+            Produto produto = new Produto();
+            produto.Id = 1;
+            produto.DataValidade = DateTime.Now.AddDays(-2);
+            produto.Disponibilidade = true;
+            Venda venda = ObjectMother.getValidoVenda(produto);
+            venda.Id = 0;
+            venda.Produto = produto;
+
+            //Acão
+            Action acaoResultado = () => _vendaService.Adiciona(venda);
+
+            //Verificar
+            acaoResultado.Should().Throw<ProdutoForaDaDataDeValidadeException>();
+        }
+
+        [Test]
         public void VendaSistemaIntegracao_Atualizar_DeveRetornarOk()
         {
             //Cenário
             Venda vendaParaEditar = _vendaService.Obtem(1);
             vendaParaEditar.Id = 1;
+            vendaParaEditar.Produto.Disponibilidade = true;
+            vendaParaEditar.Produto.DataValidade = DateTime.Now.AddDays(2);
             string vendaVelha = vendaParaEditar.NomeCliente;
             string novaVenda = "Venda";
 
@@ -126,8 +168,9 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         {
             //Cenário
             Produto produto = new Produto();
-            long idProduto = 1;
-            produto.Id = idProduto;
+            produto.Id = 1;
+            produto.Disponibilidade = true;
+            produto.DataValidade = DateTime.Now.AddDays(2);
             Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;
@@ -144,8 +187,9 @@ namespace DonaLaura.Integracao.Tests.Features.Vendas
         {
             //Cenário
             Produto produto = new Produto();
-            long idProduto = 1;
-            produto.Id = idProduto;
+            produto.Id = 1;
+            produto.Disponibilidade = true;
+            produto.DataValidade = DateTime.Now.AddDays(2);
             Venda venda = ObjectMother.getValidoVenda(produto);
             venda.Id = 0;
             venda.Produto = produto;

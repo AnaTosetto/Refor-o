@@ -36,6 +36,9 @@ namespace DonaLaura.Application.Tests.Features.Vendas
             Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
             venda.Id = 0;
 
+            _mockProduto.Setup(dataValidade => dataValidade.DataValidade).Returns(DateTime.Now.AddDays(2));
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(true);
+
             //Ação
             _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
             Venda retorno = _vendaService.Adiciona(venda);
@@ -85,11 +88,55 @@ namespace DonaLaura.Application.Tests.Features.Vendas
         }
 
         [Test]
+        public void VendaService_Adiciona_ProdutoIndisponivelNoEstoque_DeveRetornarExcecao()
+        {
+            //Cenário
+            Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
+            venda.Id = 0;
+
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(false);
+
+            //Ação
+            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
+
+            Action acaoRetorno = () => _vendaService.Adiciona(venda);
+
+            //Verificar
+            acaoRetorno.Should().Throw<ProdutoIndisponivelEmEstoqueException>();
+
+            _mockVendaRepository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void VendaService_Adiciona_ProdutoForaDaDataDeValidade_DeveRetornarExcecao()
+        {
+            //Cenário
+            Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
+            venda.Id = 0;
+
+            _mockProduto.Setup(dataValidade => dataValidade.DataValidade).Returns(DateTime.Now.AddDays(-2));
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(true);
+
+            //Ação
+            _mockVendaRepository.Setup(rp => rp.Adicionar(venda)).Returns(new Venda { Id = 1, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });
+
+            Action acaoRetorno = () => _vendaService.Adiciona(venda);
+
+            //Verificar
+            acaoRetorno.Should().Throw<ProdutoForaDaDataDeValidadeException>();
+
+            _mockVendaRepository.VerifyNoOtherCalls();
+        }
+
+        [Test]
         public void VendaService_Atualiza_VendaValida_DeveRetornarOk()
         {
             //Cenário
             Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
             venda.Id = 1;
+
+            _mockProduto.Setup(dataValidade => dataValidade.DataValidade).Returns(DateTime.Now.AddDays(2));
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(true);
 
             //Ação
             _mockVendaRepository.Setup(rp => rp.Atualizar(venda)).Returns(new Venda { Id = venda.Id, NomeCliente = "nome", Produto = _mockProduto.Object, Quantidade = 2 });

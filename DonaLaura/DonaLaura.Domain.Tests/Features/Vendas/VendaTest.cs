@@ -56,6 +56,9 @@ namespace DonaLaura.Domain.Tests.Features.Vendas
             Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
             venda.Id = 1;
 
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(true);
+            _mockProduto.Setup(dataValidade => dataValidade.DataValidade).Returns(DateTime.Now.AddDays(2));
+
             //Acão
             Action action = () => venda.Validate();
 
@@ -64,16 +67,45 @@ namespace DonaLaura.Domain.Tests.Features.Vendas
         }
 
         [Test]
-        public void Venda_DeveSerValido_Lucro()
+        public void Venda_Lucro_DeveSerValido()
         {
-            Venda venda = new Venda();
-            _mockProduto.Setup(precoCusto => precoCusto.PrecoCusto).Returns(2);
-            _mockProduto.Setup(precoVenda => precoVenda.PrecoVenda).Returns(4);
+            Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
+            venda.Id = 1;
             venda.Quantidade = 3;
 
-            //double lucro = 6;
+            _mockProduto.Setup(precoCusto => precoCusto.PrecoCusto).Returns(2);
+            _mockProduto.Setup(precoVenda => precoVenda.PrecoVenda).Returns(4);
 
+            var lucro = venda.Lucro;
+            
             venda.Lucro.Should().Be(6);
+        }
+
+        [Test]
+        public void Venda_ProdutoIndisponivel_DeveRetornarExcecao()
+        {
+            Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
+            venda.Id = 1;
+
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(false);
+
+            Action acaoResultado = () => venda.Validate();
+
+            acaoResultado.Should().Throw<ProdutoIndisponivelEmEstoqueException>();
+        }
+
+        [Test]
+        public void Venda_ProdutoForaDaDataDeValidade_DeveRetornarExcecao()
+        {
+            Venda venda = ObjectMother.getValidoVenda(_mockProduto.Object);
+            venda.Id = 1;
+
+            _mockProduto.Setup(disponivel => disponivel.Disponibilidade).Returns(true);
+            _mockProduto.Setup(dataValidade => dataValidade.DataValidade).Returns(DateTime.Now.AddDays(-2));
+
+            Action acaoResultado = () => venda.Validate();
+
+            acaoResultado.Should().Throw<ProdutoForaDaDataDeValidadeException>();
         }
     }
 }

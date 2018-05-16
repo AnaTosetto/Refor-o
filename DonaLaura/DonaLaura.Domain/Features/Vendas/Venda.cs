@@ -29,6 +29,10 @@ namespace DonaLaura.Domain.Features.Vendas
                 throw new QuantidadeMenorOuIgualZeroException();
             if (string.IsNullOrEmpty(NomeCliente))
                 throw new NomeNuloOuVazioException();
+            if(Produto.Disponibilidade == false)
+                throw new ProdutoIndisponivelEmEstoqueException();
+            if (Produto.DataValidade < DateTime.Now.Date)
+                throw new ProdutoForaDaDataDeValidadeException();
         }
 
         public double CalcularLucro()
