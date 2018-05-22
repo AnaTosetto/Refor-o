@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prova2.Dominio.Features.Livros.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,8 @@ namespace Prova2.Dominio.Features.Livros
 
         public void Validar()
         {
-
+                if (String.IsNullOrEmpty(Titulo))
+                    throw new LivroInvalidoException("O título não pode ser nulo ou vazio!");
         }
     }
 }

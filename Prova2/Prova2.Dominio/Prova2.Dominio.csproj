@@ -40,11 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\NegocioException.cs" />
+    <Compile Include="Features\Emprestimos\Emprestimo.cs" />
+    <Compile Include="Features\Livros\Exceptions\AutorComCaracteresMinimoException.cs" />
+    <Compile Include="Features\Livros\Exceptions\AutorNuloOuVazioException.cs" />
+    <Compile Include="Features\Livros\Exceptions\DataDePublicacaoInvalidaException.cs" />
+    <Compile Include="Features\Livros\Exceptions\LivroInvalidoException.cs" />
+    <Compile Include="Features\Livros\Exceptions\TemaComCaracteresMinimoException.cs" />
+    <Compile Include="Features\Livros\Exceptions\TituloComCaracteresMinimoException.cs" />
+    <Compile Include="Features\Livros\Exceptions\TemaNuloOuVazioException.cs" />
+    <Compile Include="Features\Livros\Exceptions\TituloNuloOuVazioException.cs" />
+    <Compile Include="Features\Livros\Exceptions\VolumeIgualZero.cs" />
     <Compile Include="Features\Livros\Livro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Emprestimos\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
