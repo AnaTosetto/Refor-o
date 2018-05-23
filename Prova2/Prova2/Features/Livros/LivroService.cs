@@ -31,19 +31,19 @@ namespace Prova2.Features.Livros
             return _livroRepositorio.Atualizar(livro);
         }
 
-        public void Exclui(Livro entidade)
+        public void Exclui(Livro livro)
         {
-            throw new NotImplementedException();
+            _livroRepositorio.Excluir(livro);
         }
 
         public Livro Obtem(int id)
         {
-            throw new NotImplementedException();
+            return _livroRepositorio.Obter(id);
         }
 
         public IEnumerable<Livro> ObtemTudo()
         {
-            throw new NotImplementedException();
+            return _livroRepositorio.ObterTudo();
         }
     }
 }

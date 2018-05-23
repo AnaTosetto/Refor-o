@@ -202,7 +202,54 @@ namespace Prova2.Aplicacao.Testes.Features.Livros
         public void LivroService_Exclui_DeveSerValido()
         {
             //Cenário
+            Livro livro = ObjectMother.ObterLivroValido();
+            livro.Id = 1;
 
+            _mockLivroRepositorio.Setup(rp => rp.Excluir(livro));
+
+            //Ação
+            _livroService.Exclui(livro);
+
+            //Verificar
+            _mockLivroRepositorio.Verify(rp => rp.Excluir(livro));
+        }
+
+        [Test]
+        public void LivroService_Obtem_DeveSerValido()
+        {
+            //Cenário
+            Livro livro = ObjectMother.ObterLivroValido();
+            livro.Id = 1;
+
+            _mockLivroRepositorio.Setup(rp => rp.Obter(livro.Id)).Returns(new Livro { Id = 1, Tema = "tema", Titulo = "titulo", Autor = "autor", Volume = 1, DataPublicacao = DateTime.Now.AddDays(-2), Disponibilidade = true });
+
+            //Ação
+            Livro retorno = _livroService.Obtem(livro.Id);
+
+            //Verificar
+            _mockLivroRepositorio.Verify(rp => rp.Obter(livro.Id));
+
+            retorno.Should().NotBeNull();
+            retorno.Id.Should().BeGreaterThan(0);
+        }
+
+        [Test]
+        public void LivroService_ObtemTudo_DeveSerValido()
+        {
+            //Cenário
+            _mockLivroRepositorio.Setup(rp => rp.ObterTudo()).Returns(Enumerable.Empty<Livro>);
+
+            //Ação
+            IEnumerable<Livro> retorno = _livroService.ObtemTudo();
+
+            //Verificar
+            foreach (Livro livro in retorno)
+            {
+                livro.Id.Should().BeGreaterThan(0);
+                livro.Should().NotBeNull();
+            }
+
+            _mockLivroRepositorio.Verify(rp => rp.ObterTudo());
         }
 
     }
