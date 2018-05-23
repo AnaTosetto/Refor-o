@@ -10,29 +10,39 @@ namespace Prova2.Features.Emprestimos
 {
     public class EmprestimoService : IService<Emprestimo>
     {
-        public Emprestimo Adiciona(Emprestimo entidade)
+        IEmprestimoRepositorio _emprestimoRepositorio;
+        public EmprestimoService(IEmprestimoRepositorio emprestimoRepositorio)
         {
-            throw new NotImplementedException();
+            _emprestimoRepositorio = emprestimoRepositorio;
         }
 
-        public Emprestimo Atualiza(Emprestimo entidade)
+        public Emprestimo Adiciona(Emprestimo emprestimo)
         {
-            throw new NotImplementedException();
+            emprestimo.Validar();
+
+            return _emprestimoRepositorio.Adicionar(emprestimo);
         }
 
-        public void Exclui(Emprestimo entidade)
+        public Emprestimo Atualiza(Emprestimo emprestimo)
         {
-            throw new NotImplementedException();
+            emprestimo.Validar();
+
+            return _emprestimoRepositorio.Atualizar(emprestimo);
+        }
+
+        public void Exclui(Emprestimo emprestimo)
+        {
+            _emprestimoRepositorio.Excluir(emprestimo);
         }
 
         public Emprestimo Obtem(int id)
         {
-            throw new NotImplementedException();
+            return _emprestimoRepositorio.Obter(id);
         }
 
         public IEnumerable<Emprestimo> ObtemTudo()
         {
-            throw new NotImplementedException();
+            return _emprestimoRepositorio.ObterTudo();
         }
     }
 }

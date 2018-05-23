@@ -51,21 +51,22 @@ namespace Prova2.Dominio.Testes.Features.Emprestimos
             acaoResultado.Should().Throw<NomeNuloOuVazioException>();
         }
 
-        //[Test]
-        //public void Emprestimo_LivroIndisponivelParaEmprestimo_DeveRetornarExcecao()
-        //{
-        //    //Cenário
-        //    Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(_mockLivro.Object);
-        //    emprestimo.Id = 1;
+        [Test]
+        public void Emprestimo_LivroIndisponivelParaEmprestimo_DeveRetornarExcecao()
+        {
+            //Cenário
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(_mockLivro.Object);
+            emprestimo.Id = 1;
 
-        //    _mockLivro.Setup(livro => livro.Disponibilidade).Returns(false);
+            _mockLivro.Setup(livro => livro.Disponibilidade).Returns(false);
+            //_mockLivro.Object.Disponibilidade = false;
 
-        //    //Ação
-        //    Action acaoResultado = () => emprestimo.Validar();
+            //Ação
+            Action acaoResultado = () => emprestimo.Validar();
 
-        //    //Verificar
-        //    acaoResultado.Should().Throw<LivroIndisponivelException>();
-        //}
+            //Verificar
+            acaoResultado.Should().Throw<LivroIndisponivelException>();
+        }
 
     }
 }

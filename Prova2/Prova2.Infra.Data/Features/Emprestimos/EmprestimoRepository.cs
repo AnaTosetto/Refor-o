@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Prova2.Infra.Data
+namespace Prova2.Infra.Data.Features.Emprestimos
 {
-    public class Class1
+    class EmprestimoRepository
     {
     }
 }
