@@ -42,15 +42,20 @@
   <ItemGroup>
     <Compile Include="Exceptions\NegocioException.cs" />
     <Compile Include="Features\Emprestimos\Emprestimo.cs" />
+    <Compile Include="Features\Emprestimos\Exceptions\LivroIndisponivelException.cs" />
+    <Compile Include="Features\Emprestimos\Exceptions\NomeNuloOuVazioException.cs" />
+    <Compile Include="Features\Emprestimos\IEmprestimoRepositorio.cs" />
+    <Compile Include="Features\Interfaces\IRepositorio.cs" />
+    <Compile Include="Features\Interfaces\IService.cs" />
     <Compile Include="Features\Livros\Exceptions\AutorComCaracteresMinimoException.cs" />
     <Compile Include="Features\Livros\Exceptions\AutorNuloOuVazioException.cs" />
     <Compile Include="Features\Livros\Exceptions\DataDePublicacaoInvalidaException.cs" />
-    <Compile Include="Features\Livros\Exceptions\LivroInvalidoException.cs" />
     <Compile Include="Features\Livros\Exceptions\TemaComCaracteresMinimoException.cs" />
     <Compile Include="Features\Livros\Exceptions\TituloComCaracteresMinimoException.cs" />
     <Compile Include="Features\Livros\Exceptions\TemaNuloOuVazioException.cs" />
     <Compile Include="Features\Livros\Exceptions\TituloNuloOuVazioException.cs" />
-    <Compile Include="Features\Livros\Exceptions\VolumeIgualZero.cs" />
+    <Compile Include="Features\Livros\Exceptions\VolumeIgualZeroException.cs" />
+    <Compile Include="Features\Livros\ILivroRepositorio.cs" />
     <Compile Include="Features\Livros\Livro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

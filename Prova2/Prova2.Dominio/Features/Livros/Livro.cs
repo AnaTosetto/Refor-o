@@ -1,9 +1,5 @@
 ﻿using Prova2.Dominio.Features.Livros.Exceptions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prova2.Dominio.Features.Livros
 {
@@ -15,12 +11,26 @@ namespace Prova2.Dominio.Features.Livros
         public string Autor { get; set; }
         public int Volume { get; set; }
         public DateTime DataPublicacao { get; set; }
-        public bool Disponibilidade { get; set; }
+        public virtual bool Disponibilidade { get; set; }
 
         public void Validar()
         {
-                if (String.IsNullOrEmpty(Titulo))
-                    throw new LivroInvalidoException("O título não pode ser nulo ou vazio!");
+            if (string.IsNullOrEmpty(Titulo))
+                throw new TituloNuloOuVazioException();
+            if (string.IsNullOrEmpty(Tema))
+                throw new TemaNuloOuVazioException();
+            if (string.IsNullOrEmpty(Autor))
+                throw new AutorNuloOuVazioException();
+            if (Titulo.Length < 4)
+                throw new TituloComCaracteresMinimoException();
+            if (Tema.Length < 4)
+                throw new TemaComCaracteresMinimoException();
+            if (Autor.Length < 4)
+                throw new AutorComCaracteresMinimoException();
+            if (Volume == 0)
+                throw new VolumeIgualZeroException();
+            if (DataPublicacao.Day > DateTime.Now.Day)
+                throw new DataDePublicacaoInvalidaException();
         }
     }
 }

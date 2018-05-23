@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prova2.Dominio.Features.Livros.Exceptions
 {
-    class AutorComCaracteresMinimoException : NegocioException
+    public class AutorComCaracteresMinimoException : NegocioException
     {
         public AutorComCaracteresMinimoException() : base("O autor não pode ter menos de 4 caracteres.")
         {

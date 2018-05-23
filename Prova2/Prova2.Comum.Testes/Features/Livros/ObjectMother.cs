@@ -106,9 +106,22 @@ namespace Prova2.Comum.Testes.Features.Livros
             {
                 Titulo = "titulo",
                 Tema = "tema",
-                Autor = "abc",
+                Autor = "autor",
                 Volume = 0,
                 DataPublicacao = DateTime.Now.AddDays(-2),
+                Disponibilidade = true
+            };
+        }
+
+        public static Livro ObterLivroInvalido_DataPublicacaoInvalida()
+        {
+            return new Livro
+            {
+                Titulo = "titulo",
+                Tema = "tema",
+                Autor = "autor",
+                Volume = 1,
+                DataPublicacao = DateTime.Now.AddDays(2),
                 Disponibilidade = true
             };
         }

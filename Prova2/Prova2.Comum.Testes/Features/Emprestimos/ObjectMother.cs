@@ -1,4 +1,5 @@
 ﻿using Prova2.Dominio.Features.Emprestimos;
+using Prova2.Dominio.Features.Livros;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Prova2.Comum.Testes.Features.Emprestimos
 {
     public static partial class ObjectMother
     {
-        public static Emprestimo ObterEmprestimoValido()
+        public static Emprestimo ObterEmprestimoValido(Livro livro)
         {
             return new Emprestimo
             {
@@ -18,7 +19,7 @@ namespace Prova2.Comum.Testes.Features.Emprestimos
             };
         }
 
-        public static Emprestimo ObterEmprestimoInvalido_NomeClienteNuloOuVazio()
+        public static Emprestimo ObterEmprestimoInvalido_NomeClienteNuloOuVazio(Livro livro)
         {
             return new Emprestimo
             {

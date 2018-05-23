@@ -71,11 +71,22 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Emprestimos\EmprestimoTeste.cs" />
     <Compile Include="Features\Livros\LivroTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prova2.Comum.Testes\Prova2.Comum.Testes.csproj">
+      <Project>{2dacc57b-85b4-4b6a-9a5b-c73d97bbf995}</Project>
+      <Name>Prova2.Comum.Testes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prova2.Dominio\Prova2.Dominio.csproj">
+      <Project>{a2acbaa4-c43b-48db-b358-2be35f59737c}</Project>
+      <Name>Prova2.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

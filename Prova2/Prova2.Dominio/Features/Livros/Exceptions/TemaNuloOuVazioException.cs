@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Prova2.Dominio.Features.Livros.Exceptions
 {
-    class TemaNuloOuVazioException : NegocioException
+    public class TemaNuloOuVazioException : NegocioException
     {
         public TemaNuloOuVazioException() : base("O tema não pode ser nulo ou vazio.")
         {

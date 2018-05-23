@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Prova2.Dominio.Features.Livros.Exceptions
 {
-    public class VolumeIgualZero : NegocioException
+    public class VolumeIgualZeroException : NegocioException
     {
-        public VolumeIgualZero() : base("O volume deve ser maior que zero.")
+        public VolumeIgualZeroException() : base("O volume deve ser maior que zero.")
         {
         }
     }
