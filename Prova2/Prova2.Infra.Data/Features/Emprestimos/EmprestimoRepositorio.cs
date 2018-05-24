@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prova2.Infra.Data.Features.Emprestimos
 {
-    class EmprestimoRepository
+    public class EmprestimoRepositorio
     {
     }
 }

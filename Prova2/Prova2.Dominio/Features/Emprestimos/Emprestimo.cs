@@ -1,10 +1,6 @@
 ﻿using Prova2.Dominio.Features.Emprestimos.Exceptions;
 using Prova2.Dominio.Features.Livros;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Prova2.Dominio.Features.Emprestimos
 {

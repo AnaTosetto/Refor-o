@@ -25,7 +25,8 @@ namespace Prova2.Comum.Testes.Features.Emprestimos
             return new Emprestimo
             {
                 NomeCliente = "",
-                DataDevolucao = DateTime.Now.AddDays(2)
+                DataDevolucao = DateTime.Now.AddDays(2),
+                Livro = livro
             };
         }
     }

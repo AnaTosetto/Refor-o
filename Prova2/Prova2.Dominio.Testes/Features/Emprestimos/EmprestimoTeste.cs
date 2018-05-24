@@ -29,6 +29,7 @@ namespace Prova2.Dominio.Testes.Features.Emprestimos
             //Cenário
             Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(_mockLivro.Object);
             emprestimo.Id = 1;
+            emprestimo.Livro.Disponibilidade = true;
 
             //Ação
             Action acaoResultado = () => emprestimo.Validar();

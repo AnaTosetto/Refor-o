@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\IdentificadorIndefinidoException.cs" />
     <Compile Include="Exceptions\NegocioException.cs" />
     <Compile Include="Features\Emprestimos\Emprestimo.cs" />
     <Compile Include="Features\Emprestimos\Exceptions\LivroIndisponivelException.cs" />

@@ -40,7 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Emprestimos\EmprestimoRepositorio.cs" />
+    <Compile Include="Features\Livros\LivroRepositorio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prova2.Dominio\Prova2.Dominio.csproj">
+      <Project>{a2acbaa4-c43b-48db-b358-2be35f59737c}</Project>
+      <Name>Prova2.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prova2.Infra\Prova2.Infra.csproj">
+      <Project>{81126488-966c-4abb-9741-713bfb075afc}</Project>
+      <Name>Prova2.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
