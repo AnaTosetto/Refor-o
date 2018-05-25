@@ -11,43 +11,36 @@ namespace Prova2.Infra.Data.Features.Livros
 {
     public class LivroRepositorio : ILivroRepositorio
     {
-        string _sqlInsert = @"INSERT INTO Livro
+        string _sqlInserir = @"INSERT INTO Livro
                                 (Titulo, Tema, Autor, Volume, DataPublicacao, Disponibilidade)
                               VALUES
                                 (@Titulo, @Tema, @Autor, @Volume, @DataPublicacao, @Disponibilidade);";
 
-        string _sqlUpdate = @"UPDATE Livro
+        string _sqlEditar = @"UPDATE Livro
                                 SET Titulo = @Titulo, Tema = @Tema, Autor = @Autor,
                                     Volume = @Volume, DataPublicacao = @DataPublicacao, 
                                     Disponibilidade = @Disponibilidade
                                 WHERE Id = @Id";
 
-        string _sqlDelete = @"DELETE FROM Livro 
+        string _sqlExcluir = @"DELETE FROM Livro 
                                 WHERE Id = @Id";
 
-        string _sqlGet = @"SELECT * FROM Livro
+        string _sqlObter = @"SELECT * FROM Livro
                             WHERE Id = @Id";
 
-        string _sqlGetAll = @"SELECT * FROM Livro";
+        string _sqlObterTudo = @"SELECT * FROM Livro";
 
         public Livro Adicionar(Livro livro)
         {
-            if(livro.Id == 0)
-            {
-                livro.Id = Db.Insert(_sqlInsert, Take(livro));
-                return livro;
-            }
-            else
-            {
-                throw new IdentificadorIndefinidoException();
-            }      
+                livro.Id = Db.Insert(_sqlInserir, Take(livro));
+                return livro;   
         }
 
         public Livro Atualizar(Livro livro)
         {
             if(livro.Id > 0)
             {
-                Db.Update(_sqlUpdate, Take(livro));
+                Db.Update(_sqlEditar, Take(livro));
                 return livro;
             }
             else
@@ -60,7 +53,7 @@ namespace Prova2.Infra.Data.Features.Livros
         {
             if(livro.Id > 0)
             {
-                Db.Delete(_sqlDelete, Take(livro));
+                Db.Delete(_sqlExcluir, Take(livro));
             }
             else
             {
@@ -72,7 +65,7 @@ namespace Prova2.Infra.Data.Features.Livros
         {
             if(id > 0)
             {
-                return Db.Get(_sqlGet, Make, new object[] { "@Id", id });
+                return Db.Get(_sqlObter, Make, new object[] { "@Id", id });
             }
             else
             {
@@ -82,7 +75,7 @@ namespace Prova2.Infra.Data.Features.Livros
 
         public IEnumerable<Livro> ObterTudo()
         {
-            return Db.GetAll<Livro>(_sqlGetAll, Make);
+            return Db.GetAll<Livro>(_sqlObterTudo, Make);
         }
 
         private object[] Take(Livro livro)

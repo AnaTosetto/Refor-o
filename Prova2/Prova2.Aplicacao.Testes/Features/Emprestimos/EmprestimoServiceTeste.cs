@@ -31,7 +31,7 @@ namespace Prova2.Aplicacao.Testes.Features.Emprestimos
             //Cenário
             Livro livro = new Livro();
             livro.Id = 1;
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(livro);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             emprestimo.Id = 0;
             emprestimo.Livro = livro;
             emprestimo.Livro.Disponibilidade = true;
@@ -72,7 +72,7 @@ namespace Prova2.Aplicacao.Testes.Features.Emprestimos
             //Cenário
             Livro livro = new Livro();
             livro.Id = 1;
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(livro);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             emprestimo.Id = 0;
             emprestimo.Livro = livro;
             emprestimo.Livro.Disponibilidade = false;
@@ -93,7 +93,7 @@ namespace Prova2.Aplicacao.Testes.Features.Emprestimos
             //Cenário
             Livro livro = new Livro();
             livro.Id = 1;
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(livro);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             emprestimo.Id = 1;
             emprestimo.Livro = livro;
             emprestimo.Livro.Disponibilidade = true;
@@ -115,7 +115,7 @@ namespace Prova2.Aplicacao.Testes.Features.Emprestimos
             //Cenário
             Livro livro = new Livro();
             livro.Id = 1;
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(livro);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             emprestimo.Id = 1;
 
             _mockEmprestimoRepositorio.Setup(rp => rp.Excluir(emprestimo));
@@ -133,7 +133,7 @@ namespace Prova2.Aplicacao.Testes.Features.Emprestimos
             //Cenário
             Livro livro = new Livro();
             livro.Id = 1;
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(livro);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             livro.Id = 1;
 
             _mockEmprestimoRepositorio.Setup(rp => rp.Obter(emprestimo.Id)).Returns(new Emprestimo { Id = 1, NomeCliente = "nome cliente", DataDevolucao = DateTime.Now.AddDays(2), Livro = livro });

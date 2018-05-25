@@ -10,13 +10,12 @@ namespace Prova2.Comum.Testes.Features.Emprestimos
 {
     public static partial class ObjectMother
     {
-        public static Emprestimo ObterEmprestimoValido(Livro livro)
+        public static Emprestimo ObterEmprestimoValido()
         {
             return new Emprestimo
             {
                 NomeCliente = "Cliente",
-                DataDevolucao = DateTime.Now.AddDays(2),
-                Livro = livro
+                DataDevolucao = DateTime.Now.AddDays(2)
             };
         }
 

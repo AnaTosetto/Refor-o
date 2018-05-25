@@ -38,20 +38,6 @@ namespace Prova2.Infra.Data.Testes.Features.Livros
         }
 
         [Test]
-        public void LivroRepositorio_Adicionar_DeveRetornarExcecao()
-        {
-            //Cenário
-            Livro livro = ObjectMother.ObterLivroValido();
-            livro.Id = 0;
-
-            //Ação
-            Action acaoResultado = () => _livroRepositorio.Adicionar(livro);
-
-            //Verificar
-            acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
-        }
-
-        [Test]
         public void LivroRepositorio_Atualizar_DeveSerValido()
         {
             //Cenário

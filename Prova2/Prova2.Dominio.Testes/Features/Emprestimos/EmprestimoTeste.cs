@@ -27,12 +27,14 @@ namespace Prova2.Dominio.Testes.Features.Emprestimos
         public void Emprestimo_DeveSerValido()
         {
             //Cenário
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(_mockLivro.Object);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             emprestimo.Id = 1;
-            emprestimo.Livro.Disponibilidade = true;
+            emprestimo.Livro = _mockLivro.Object;
+
+            _mockLivro.Setup(livro => livro.Disponibilidade).Returns(true);
 
             //Ação
-            Action acaoResultado = () => emprestimo.Validar();
+            Action acaoResultado = emprestimo.Validar;
 
             //Verificar
             acaoResultado.Should().NotThrow();
@@ -56,9 +58,10 @@ namespace Prova2.Dominio.Testes.Features.Emprestimos
         public void Emprestimo_LivroIndisponivelParaEmprestimo_DeveRetornarExcecao()
         {
             //Cenário
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido(_mockLivro.Object);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
             emprestimo.Id = 1;
-
+            emprestimo.Livro = _mockLivro.Object;
+            
             _mockLivro.Setup(livro => livro.Disponibilidade).Returns(false);
             //_mockLivro.Object.Disponibilidade = false;
 
