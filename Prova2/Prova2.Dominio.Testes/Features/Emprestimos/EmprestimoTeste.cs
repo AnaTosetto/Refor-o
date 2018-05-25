@@ -73,5 +73,31 @@ namespace Prova2.Dominio.Testes.Features.Emprestimos
             acaoResultado.Should().Throw<LivroIndisponivelException>();
         }
 
+        [Test]
+        public void Venda_ComMulta_DeveSerValido()
+        {
+
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
+            emprestimo.Id = 1;
+            emprestimo.Livro = _mockLivro.Object;
+
+            emprestimo.CalcularMulta(DateTime.Now.AddDays(3));
+
+            emprestimo.Multa.Should().Be(2.5);
+        }
+
+        [Test]
+        public void Venda_SemMulta_DeveSerValido()
+        {
+
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
+            emprestimo.Id = 1;
+            emprestimo.Livro = _mockLivro.Object;
+
+            emprestimo.CalcularMulta(DateTime.Now.AddDays(2));
+
+            emprestimo.Multa.Should().Be(0);
+        }
+
     }
 }

@@ -41,7 +41,6 @@ namespace Prova2.Integracao.Testes.Features.Livros
             livroResultado.Tema.Should().Be(livro.Tema);
             livroResultado.Autor.Should().Be(livro.Autor);
             livroResultado.Volume.Should().Be(livro.Volume);
-            livroResultado.DataPublicacao.Should().BeBefore(DateTime.Now.AddDays(-2));
 
             Livro livroGet = _livroService.Obtem(livroResultado.Id);
             livroResultado.Id.Should().Be(livroGet.Id);

@@ -19,16 +19,6 @@ namespace Prova2.Comum.Testes.Features.Emprestimos
             };
         }
 
-        public static Emprestimo ObterEmprestimoValidoComLivro(Livro livro)
-        {
-            return new Emprestimo
-            {
-                NomeCliente = "Cliente",
-                DataDevolucao = DateTime.Now.AddDays(2),
-                Livro = livro
-            };
-        }
-
         public static Emprestimo ObterEmprestimoInvalido_NomeClienteNuloOuVazio()
         {
             return new Emprestimo
