@@ -94,25 +94,33 @@ namespace Prova2.Integracao.Testes.Features.Emprestimos
         public void EmprestimoIntegracaoSistema_Atualizar_DeveSerValido()
         {
             //Cenário
-            Emprestimo emprestimoParaEditar = _emprestimoService.Obtem(1);
-            emprestimoParaEditar.Id = 1;
-            emprestimoParaEditar.Livro.Disponibilidade = true;
-            string nomeAntigo = emprestimoParaEditar.NomeCliente;
-            string nomeNovo = "Nome";
+            Livro livro = new Livro();
+            livro.Id = 1;
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
+            emprestimo.Id = 0;
+            emprestimo.Livro = livro;
+            emprestimo.Livro.Disponibilidade = true;
+            
+            emprestimo = _emprestimoService.Adiciona(emprestimo);
+
+            _emprestimoService.Obtem(emprestimo.Id);
+           
+            string nomeAntigo = emprestimo.NomeCliente;
+            string nomeNovo = "Nome";         
 
             if (nomeAntigo == nomeNovo)
             {
                 nomeNovo = "Nome novo";
             }
 
-            emprestimoParaEditar.NomeCliente = nomeNovo;
+            emprestimo.NomeCliente = nomeNovo;
 
             //Ação
-            Emprestimo emprestimoResultado = _emprestimoService.Atualiza(emprestimoParaEditar);
+            Emprestimo emprestimoResultado = _emprestimoService.Atualiza(emprestimo);
 
             //Verificar
             emprestimoResultado.NomeCliente.Should().NotBe(nomeAntigo);
-            emprestimoResultado.Id.Should().Be(emprestimoParaEditar.Id);
+            emprestimoResultado.Id.Should().Be(emprestimo.Id);
         }
 
         [Test]
@@ -179,21 +187,18 @@ namespace Prova2.Integracao.Testes.Features.Emprestimos
             Livro livro = new Livro();
             livro.Id = 1;
             livro.Disponibilidade = true;
-            livro.Titulo = "Titulo";
-            livro.Tema = "Tema";
-            livro.Autor = "Autor";
-            livro.Volume = 1;
-            livro.DataPublicacao = DateTime.Now.AddDays(-2);
 
             Emprestimo emprestimo = ObjectMother.ObterEmprestimoValido();
-            emprestimo.Id = 1;
+            emprestimo.Id = 0;
             emprestimo.Livro = livro;
+
+            emprestimo = _emprestimoService.Adiciona(emprestimo);
 
             //Ação
             emprestimo = _emprestimoService.Obtem(emprestimo.Id);
 
             //Verificar
-            emprestimo.Id.Should().Be(1);
+            emprestimo.Id.Should().Be(emprestimo.Id);
             emprestimo.Should().NotBeNull();
         }
 
