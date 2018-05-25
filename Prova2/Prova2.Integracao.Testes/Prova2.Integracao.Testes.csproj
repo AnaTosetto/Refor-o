@@ -61,6 +61,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Emprestimos\EmprestimoIntegracaoSistema.cs" />
     <Compile Include="Features\Livros\LivroIntegracaoSistema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,9 +69,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Features\Emprestimos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Prova2.Comum.Testes\Prova2.Comum.Testes.csproj">
       <Project>{2dacc57b-85b4-4b6a-9a5b-c73d97bbf995}</Project>

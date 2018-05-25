@@ -53,8 +53,9 @@ namespace Prova2.Aplicacao.Testes.Features.Emprestimos
             //Cenário
             Livro livro = new Livro();
             livro.Id = 1;
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoInvalido_NomeClienteNuloOuVazio(livro);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoInvalido_NomeClienteNuloOuVazio();
             emprestimo.Id = 0;
+            emprestimo.Livro = livro;
 
             _mockEmprestimoRepositorio.Setup(rp => rp.Adicionar(emprestimo)).Returns(new Emprestimo { Id = 1, NomeCliente = "nome", DataDevolucao = DateTime.Now.AddDays(2), Livro = livro });
 

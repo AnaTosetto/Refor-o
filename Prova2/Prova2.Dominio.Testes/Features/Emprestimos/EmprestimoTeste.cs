@@ -44,8 +44,9 @@ namespace Prova2.Dominio.Testes.Features.Emprestimos
         public void Emprestimo_NomeNuloOuVazio_DeveRetornarExcecao()
         {
             //Cenário
-            Emprestimo emprestimo = ObjectMother.ObterEmprestimoInvalido_NomeClienteNuloOuVazio(_mockLivro.Object);
+            Emprestimo emprestimo = ObjectMother.ObterEmprestimoInvalido_NomeClienteNuloOuVazio();
             emprestimo.Id = 1;
+            emprestimo.Livro = _mockLivro.Object;
 
             //Ação
             Action acaoResultado = () => emprestimo.Validar();

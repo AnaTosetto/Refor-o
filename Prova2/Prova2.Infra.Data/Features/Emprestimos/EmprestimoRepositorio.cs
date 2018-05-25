@@ -67,7 +67,7 @@ namespace Prova2.Infra.Data.Features.Emprestimos
         {
             if(id > 0)
             {
-                return Db.Get(_sqlObter, Make, new object[] { "@Id", id });
+                return Db.Get<Emprestimo>(_sqlObter, Make, new object[] { "@Id", id });
             }
             else
             {

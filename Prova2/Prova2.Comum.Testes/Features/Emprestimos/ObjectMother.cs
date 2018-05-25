@@ -19,13 +19,12 @@ namespace Prova2.Comum.Testes.Features.Emprestimos
             };
         }
 
-        public static Emprestimo ObterEmprestimoInvalido_NomeClienteNuloOuVazio(Livro livro)
+        public static Emprestimo ObterEmprestimoInvalido_NomeClienteNuloOuVazio()
         {
             return new Emprestimo
             {
                 NomeCliente = "",
-                DataDevolucao = DateTime.Now.AddDays(2),
-                Livro = livro
+                DataDevolucao = DateTime.Now.AddDays(2)
             };
         }
     }
