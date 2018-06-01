@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Funcionalidades\Funcionarios\ObjectMother.cs" />
+    <Compile Include="Funcionalidades\Salas\ObjectMother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -45,12 +45,14 @@
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\NomeNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\RamalNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Funcionario.cs" />
+    <Compile Include="Funcionalidades\Salas\Excecoes\LugarIgualAZeroException.cs" />
+    <Compile Include="Funcionalidades\Salas\Excecoes\NomeNuloOuVazioException.cs" />
+    <Compile Include="Funcionalidades\Salas\Sala.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Funcionalidades\Agendamentos\" />
     <Folder Include="Funcionalidades\Interfaces\" />
-    <Folder Include="Funcionalidades\Salas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

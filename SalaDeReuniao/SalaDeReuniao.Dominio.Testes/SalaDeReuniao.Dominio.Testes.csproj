@@ -72,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Funcionalidades\Funcionarios\FuncionarioTeste.cs" />
+    <Compile Include="Funcionalidades\Salas\SalaTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Funcionalidades\Agendamentos\" />
-    <Folder Include="Funcionalidades\Salas\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SalaDeReuniao.Comum.Testes\SalaDeReuniao.Comum.Testes.csproj">
