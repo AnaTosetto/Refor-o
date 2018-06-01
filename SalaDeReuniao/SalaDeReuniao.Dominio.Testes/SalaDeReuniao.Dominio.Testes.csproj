@@ -81,6 +81,16 @@
     <Folder Include="Funcionalidades\Agendamentos\" />
     <Folder Include="Funcionalidades\Salas\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SalaDeReuniao.Comum.Testes\SalaDeReuniao.Comum.Testes.csproj">
+      <Project>{26588C27-9A6F-4072-8B30-74244B804353}</Project>
+      <Name>SalaDeReuniao.Comum.Testes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalaDeReuniao.Dominio\SalaDeReuniao.Dominio.csproj">
+      <Project>{CB094A64-2F3B-404A-AE13-EA29E0BF45CA}</Project>
+      <Name>SalaDeReuniao.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
