@@ -25,7 +25,7 @@ namespace SalaDeReuniao.Dominio.Testes.Funcionalidades.Salas
             Action acaoResultado = () => sala.Validar();
 
             //Verificar
-            acaoResultado.Should().NotThrow();
+            acaoResultado.Should().NotThrow<Exception>();
         }
 
         [Test]

@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidades\Agendamentos\ObjectMother.cs" />
     <Compile Include="Funcionalidades\Funcionarios\ObjectMother.cs" />
     <Compile Include="Funcionalidades\Salas\ObjectMother.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

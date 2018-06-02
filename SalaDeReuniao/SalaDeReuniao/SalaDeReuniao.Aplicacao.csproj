@@ -40,10 +40,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidades\Funcionarios\FuncionarioService.cs" />
+    <Compile Include="Funcionalidades\Interfaces\IService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Funcionalidades\" />
+    <Folder Include="Funcionalidades\Agendamentos\" />
+    <Folder Include="Funcionalidades\Salas\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SalaDeReuniao.Dominio\SalaDeReuniao.Dominio.csproj">
+      <Project>{CB094A64-2F3B-404A-AE13-EA29E0BF45CA}</Project>
+      <Name>SalaDeReuniao.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

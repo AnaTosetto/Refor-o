@@ -41,18 +41,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excecoes\ExcecaoDeNegocio.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Agendamento.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Excecoes\FuncionarioNuloException.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraFinalInvalidaException.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraFinalMenorQueHoraInicialException.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraInicialInvalidaException.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Excecoes\SalaVaziaException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\CargoNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\NomeNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\RamalNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Funcionario.cs" />
+    <Compile Include="Funcionalidades\Funcionarios\IFuncionarioRepositorio.cs" />
+    <Compile Include="Funcionalidades\Interfaces\IRepositorio.cs" />
     <Compile Include="Funcionalidades\Salas\Excecoes\LugarIgualAZeroException.cs" />
     <Compile Include="Funcionalidades\Salas\Excecoes\NomeNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Salas\Sala.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Funcionalidades\Agendamentos\" />
-    <Folder Include="Funcionalidades\Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
