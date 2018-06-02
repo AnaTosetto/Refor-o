@@ -19,27 +19,31 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
 
         public Agendamento Adicionar(Agendamento agendamento)
         {
-            throw new NotImplementedException();
+            agendamento.Validar();
+
+            return _agendamentoRepositorio.Adicionar(agendamento);
         }
 
         public Agendamento Atualizar(Agendamento agendamento)
         {
-            throw new NotImplementedException();
+            agendamento.Validar();
+
+            return _agendamentoRepositorio.Atualizar(agendamento);
         }
 
         public void Excluir(Agendamento agendamento)
         {
-            throw new NotImplementedException();
+            _agendamentoRepositorio.Excluir(agendamento);
         }
 
         public Agendamento Obter(int id)
         {
-            throw new NotImplementedException();
+            return _agendamentoRepositorio.Obter(id);
         }
 
         public IEnumerable<Agendamento> ObterTudo()
         {
-            throw new NotImplementedException();
+            return _agendamentoRepositorio.ObterTudo();
         }
     }
 }

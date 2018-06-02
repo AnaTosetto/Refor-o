@@ -40,14 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidades\Agendamentos\AgendamentoService.cs" />
     <Compile Include="Funcionalidades\Funcionarios\FuncionarioService.cs" />
     <Compile Include="Funcionalidades\Interfaces\IService.cs" />
     <Compile Include="Funcionalidades\Salas\SalaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Funcionalidades\Agendamentos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SalaDeReuniao.Dominio\SalaDeReuniao.Dominio.csproj">
       <Project>{CB094A64-2F3B-404A-AE13-EA29E0BF45CA}</Project>

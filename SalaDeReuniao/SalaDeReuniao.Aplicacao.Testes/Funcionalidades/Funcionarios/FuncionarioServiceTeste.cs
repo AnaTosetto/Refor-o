@@ -103,7 +103,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Funcionarios
             Funcionario funcionario = ObjectMother.ObterFuncionarioValido();
             funcionario.Id = 1;
 
-            _mockFuncionarioRepositorio.Setup(rp => rp.Atualizar(funcionario)).Returns(new Funcionario { Id = 1, Cargo = "cargo", Nome = "nome", Ramal = "ramal" });
+            _mockFuncionarioRepositorio.Setup(rp => rp.Atualizar(funcionario)).Returns(new Funcionario { Id = funcionario.Id, Cargo = "cargo", Nome = "nome", Ramal = "ramal" });
 
             //Ação
             Funcionario retorno = _funcionarioService.Atualizar(funcionario);

@@ -86,7 +86,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
             Sala sala = ObjectMother.ObterSalaValida();
             sala.Id = 1;
 
-            _mockSalaRepositorio.Setup(rp => rp.Atualizar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2 });
+            _mockSalaRepositorio.Setup(rp => rp.Atualizar(sala)).Returns(new Sala { Id = sala.Id, Nome = "nome sala", Lugar = 2 });
 
             //Ação
             Sala retorno = _salaService.Atualizar(sala);
