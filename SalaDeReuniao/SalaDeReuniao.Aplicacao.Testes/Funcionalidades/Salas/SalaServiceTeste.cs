@@ -49,7 +49,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
         public void SalaService_Adicionar_NomeNuloOuVazio_DeveRetornarExcecao()
         {
             //Cenário
-            Sala sala = ObjectMother.ObterSalaValida();
+            Sala sala = ObjectMother.ObterSalaInvalida_NomeNuloOuVazio();
             sala.Id = 0;
 
             _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2 });
@@ -59,6 +59,23 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
 
             //Verificar
             acaoResultado.Should().Throw<NomeNuloOuVazioException>();
+            _mockSalaRepositorio.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void SalaService_Adicionar_LugarIgualAZerio_DeveRetornarExcecao()
+        {
+            //Cenário
+            Sala sala = ObjectMother.ObterSalaInvalida_LugarIgualAZero();
+            sala.Id = 0;
+
+            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2 });
+
+            //Ação
+            Action acaoResultado = () => _salaService.Adicionar(sala);
+
+            //Verificar
+            acaoResultado.Should().Throw<LugarIgualAZeroException>();
             _mockSalaRepositorio.VerifyNoOtherCalls();
         }
 

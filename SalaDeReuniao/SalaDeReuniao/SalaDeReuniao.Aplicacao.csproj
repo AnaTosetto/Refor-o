@@ -42,11 +42,11 @@
   <ItemGroup>
     <Compile Include="Funcionalidades\Funcionarios\FuncionarioService.cs" />
     <Compile Include="Funcionalidades\Interfaces\IService.cs" />
+    <Compile Include="Funcionalidades\Salas\SalaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Funcionalidades\Agendamentos\" />
-    <Folder Include="Funcionalidades\Salas\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SalaDeReuniao.Dominio\SalaDeReuniao.Dominio.csproj">

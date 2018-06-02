@@ -55,6 +55,7 @@
     <Compile Include="Funcionalidades\Interfaces\IRepositorio.cs" />
     <Compile Include="Funcionalidades\Salas\Excecoes\LugarIgualAZeroException.cs" />
     <Compile Include="Funcionalidades\Salas\Excecoes\NomeNuloOuVazioException.cs" />
+    <Compile Include="Funcionalidades\Salas\ISalaRepositorio.cs" />
     <Compile Include="Funcionalidades\Salas\Sala.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
