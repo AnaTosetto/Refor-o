@@ -9,9 +9,9 @@ namespace SalaDeReuniao.Comum.Testes.Base.Salas
 {
     public static class BaseSqlTeste
     {
-        private const string RECREATE_SALA_TABLE = "TRUNCATE TABLE Agendamento; DELETE FROM Sala DBCC CHECKIDENT('DBSalaDeReuniao.dbo.Sala', RESEED, 0)";
+        private const string RECREATE_SALA_TABLE = "TRUNCATE TABLE Agendamento; DELETE FROM Sala DBCC CHECKIDENT('Sala', RESEED, 0)";
 
-        private const string INSERT_SALA = "INSERT INTO Sala(Nome, Lugar, Disponibilidade) VALUES ('Sala de reunião', 4, 1,)";
+        private const string INSERT_SALA = "INSERT INTO Sala(Nome, Lugar, Disponibilidade) VALUES ('Sala de reunião', 4, 1)";
 
         public static void SeedDatabase()
         {
