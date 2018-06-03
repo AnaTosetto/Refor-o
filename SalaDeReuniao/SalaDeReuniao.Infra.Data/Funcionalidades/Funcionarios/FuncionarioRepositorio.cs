@@ -36,7 +36,7 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Funcionarios
 
         public Funcionario Atualizar(Funcionario funcionario)
         {
-            if(funcionario.Id > 0)
+            if (funcionario.Id > 0)
             {
                 Db.Update(_sqlEditar, Take(funcionario));
                 return funcionario;
@@ -49,7 +49,7 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Funcionarios
 
         public void Excluir(Funcionario funcionario)
         {
-            if(funcionario.Id > 0)
+            if (funcionario.Id > 0)
             {
                 Db.Delete(_sqlExcluir, Take(funcionario));
             }
@@ -61,7 +61,7 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Funcionarios
 
         public Funcionario Obter(int id)
         {
-            if(id > 0)
+            if (id > 0)
             {
                 return Db.Get(_sqlObter, Make, new object[] { "@Id", id });
             }

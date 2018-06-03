@@ -25,7 +25,7 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Funcionarios
             _funcionarioRepositorio = new FuncionarioRepositorio();
         }
 
-
+        [Test]
         public void FuncionarioRepositorio_Adicionar_DeveSerValido()
         {
             //Cenário

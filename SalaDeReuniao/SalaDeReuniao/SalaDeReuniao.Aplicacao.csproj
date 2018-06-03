@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C72BDA75-A8D2-4DC4-A787-F655ED7FA961}</ProjectGuid>
+    <ProjectGuid>{D2D425E9-BE1B-447C-B6EE-6926F3B5AC6E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SalaDeReuniao</RootNamespace>
@@ -46,10 +46,9 @@
     <Compile Include="Funcionalidades\Salas\SalaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SalaDeReuniao.Dominio\SalaDeReuniao.Dominio.csproj">
-      <Project>{CB094A64-2F3B-404A-AE13-EA29E0BF45CA}</Project>
+      <Project>{8CCEF002-25FE-4AB6-A0C5-E92A9500045C}</Project>
       <Name>SalaDeReuniao.Dominio</Name>
     </ProjectReference>
   </ItemGroup>

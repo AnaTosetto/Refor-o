@@ -10,7 +10,7 @@ namespace SalaDeReuniao.Dominio.Funcionalidades.Agendamentos.Excecoes
     public class FuncionarioNuloException : ExcecaoDeNegocio
     {
         public FuncionarioNuloException() : base("Para agendar funcionário não pode ser nulo.")
-        {    
+        {
         }
     }
 }
