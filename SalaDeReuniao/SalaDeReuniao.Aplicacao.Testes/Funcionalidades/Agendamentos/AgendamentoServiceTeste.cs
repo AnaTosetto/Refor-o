@@ -156,7 +156,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
 
             //Verificar
-            acaoRetorno.Should().Throw<SalaVaziaException>();
+            acaoRetorno.Should().Throw<SalaNulaOuVaziaException>();
             _mockAgendamentoRepositorio.VerifyNoOtherCalls();
         }
 

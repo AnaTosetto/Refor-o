@@ -64,6 +64,35 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Funcionarios
         }
 
         [Test]
+        public void FuncionarioIntegracaoSistema_Adicionar_CargoNuloOuVazio_DeveRetornarExcecao()
+        {
+            //Cenário
+            Funcionario funcionario = ObjectMother.ObterFuncionarioInvalido_CargoNuloOuVazio();
+            funcionario.Id = 0;
+
+            //Ação
+            Action acaoResultado = () => _funcionarioService.Adicionar(funcionario);
+
+            //Verificar
+            acaoResultado.Should().Throw<CargoNuloOuVazioException>();
+        }
+
+        [Test]
+        public void FuncionarioIntegracaoSistema_Adicionar_RamalNuloOuVazio_DeveRetornarExcecao()
+        {
+            //Cenário
+            Funcionario funcionario = ObjectMother.ObterFuncionarioInvalido_RamalNuloOuVazio();
+            funcionario.Id = 0;
+
+            //Ação
+            Action acaoResultado = () => _funcionarioService.Adicionar(funcionario);
+
+            //Verificar
+            acaoResultado.Should().Throw<RamalNuloOuVazioException>();
+        }
+
+
+        [Test]
         public void FuncionarioIntegracaoSistema_Atualizar_DeveSerValido()
         {
             //Cenário

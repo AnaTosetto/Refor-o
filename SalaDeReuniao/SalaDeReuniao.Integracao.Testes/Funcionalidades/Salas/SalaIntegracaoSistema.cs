@@ -63,6 +63,20 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Salas
         }
 
         [Test]
+        public void SalaIntegracaoSistema_Adicionar_LugarIgualAZero_DeveRetornarExcecao()
+        {
+            //Cenário
+            Sala sala = ObjectMother.ObterSalaInvalida_LugarIgualAZero();
+            sala.Id = 0;
+
+            //Ação
+            Action acaoResultado = () => _salaService.Adicionar(sala);
+
+            //Verificar
+            acaoResultado.Should().Throw<LugarIgualAZeroException>();
+        }
+
+        [Test]
         public void SalaIntegracaoSistema_Atualizar_DeveSerValido()
         {
             //Cenário
@@ -153,17 +167,17 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Salas
         }
 
         [Test]
-        public void FuncionarioIntegracaoSistema_ObterTudo_DeveSerValido()
+        public void SalaIntegracaoSistema_ObterTudo_DeveSerValido()
         {
             //Cenário
-            IEnumerable<Funcionario> listaFuncionario;
+            IEnumerable<Sala> listaSala;
 
             //Ação
-            listaFuncionario = _funcionarioService.ObterTudo();
+            listaSala = _salaService.ObterTudo();
 
             //Verificar
-            listaFuncionario.Should().NotBeNull();
-            listaFuncionario.Count().Should().BeGreaterOrEqualTo(0);
+            listaSala.Should().NotBeNull();
+            listaSala.Count().Should().BeGreaterOrEqualTo(0);
         }
     }
 }

@@ -47,7 +47,7 @@
     <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraFinalInvalidaException.cs" />
     <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraFinalMenorQueHoraInicialException.cs" />
     <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraInicialInvalidaException.cs" />
-    <Compile Include="Funcionalidades\Agendamentos\Excecoes\SalaVaziaException.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\Excecoes\SalaNulaOuVaziaException.cs" />
     <Compile Include="Funcionalidades\Agendamentos\IAgendamentoRepositorio.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\CargoNuloOuVazioException.cs" />
     <Compile Include="Funcionalidades\Funcionarios\Excecoes\NomeNuloOuVazioException.cs" />

@@ -61,16 +61,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidades\Agendamentos\AgendamentoIntegracaoSistema.cs" />
     <Compile Include="Funcionalidades\Funcionarios\FuncionarioIntegracaoSistema.cs" />
+    <Compile Include="Funcionalidades\Salas\SalaIntegracaoSistema.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Funcionalidades\Agendamentos\" />
-    <Folder Include="Funcionalidades\Salas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SalaDeReuniao.Comum.Testes\SalaDeReuniao.Comum.Testes.csproj">
       <Project>{C4D1DAC7-62D4-44D8-BDE3-7A8491D34A2D}</Project>

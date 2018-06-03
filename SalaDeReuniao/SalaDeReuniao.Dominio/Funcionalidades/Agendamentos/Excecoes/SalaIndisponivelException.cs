@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace SalaDeReuniao.Dominio.Funcionalidades.Agendamentos.Excecoes
 {
-    public class SalaVaziaException : ExcecaoDeNegocio
+    public class SalaIndisponivelException : ExcecaoDeNegocio
     {
-        public SalaVaziaException() : base("Para agendar sala não pode ser nulo ou vazio.")
-        {
+        public SalaIndisponivelException() : base("Sala está indisponível para agendamento.")
+        {  
         }
     }
 }

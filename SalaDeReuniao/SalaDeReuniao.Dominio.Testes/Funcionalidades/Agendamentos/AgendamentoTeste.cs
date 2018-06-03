@@ -117,7 +117,7 @@ namespace SalaDeReuniao.Dominio.Testes.Funcionalidades.Agendamentos
             Action acaoResultado = () => agendamento.Validar();
 
             //Verificar
-            acaoResultado.Should().Throw<SalaVaziaException>();
+            acaoResultado.Should().Throw<SalaNulaOuVaziaException>();
         }
     }
 }
