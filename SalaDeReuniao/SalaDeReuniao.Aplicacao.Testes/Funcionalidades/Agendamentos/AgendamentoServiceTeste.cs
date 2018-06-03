@@ -39,6 +39,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
+            agendamento.Sala.Disponibilidade = true;
 
             //Ação
             _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
@@ -49,6 +50,30 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             retorno.Should().NotBeNull();
             retorno.Id.Should().BeGreaterThan(0);
             retorno.Id.Should().NotBe(agendamento.Id);
+        }
+
+        [Test]
+        public void AgendamentoService_Adiciona_SalaIndisponivelParaAgendamento_DeveRetornarExcecao()
+        {
+            //Cenário
+            Funcionario funcionario = new Funcionario();
+            funcionario.Id = 1;
+            Sala sala = new Sala();
+            sala.Id = 1;
+            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
+            agendamento.Id = 0;
+            agendamento.Funcionario = funcionario;
+            agendamento.Sala = sala;
+            agendamento.Sala.Disponibilidade = false;
+
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(-1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
+
+            //Ação
+            Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
+
+            //Verificar
+            acaoRetorno.Should().Throw<SalaIndisponivelException>();
+            _mockAgendamentoRepositorio.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -172,6 +197,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Id = 1;
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
+            agendamento.Sala.Disponibilidade = true;
 
             _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(new Agendamento { Id = agendamento.Id, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 

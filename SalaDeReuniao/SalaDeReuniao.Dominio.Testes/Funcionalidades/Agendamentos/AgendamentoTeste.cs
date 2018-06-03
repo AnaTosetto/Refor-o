@@ -35,11 +35,32 @@ namespace SalaDeReuniao.Dominio.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = _mockFuncionario.Object;
             agendamento.Sala = _mockSala.Object;
 
+            _mockSala.Setup(sala => sala.Disponibilidade).Returns(true);
+
             //Ação
             Action acaoResultado = agendamento.Validar;
 
             //Verificar
             acaoResultado.Should().NotThrow<Exception>();
+        }
+
+        [Test]
+        public void Agendamento_SalaIndisponivelParaAgendamento_DeveRetornarExcecao()
+        {
+            //Cenário
+            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
+            agendamento.Id = 1;
+            agendamento.Sala = _mockSala.Object;
+            agendamento.Funcionario = _mockFuncionario.Object;
+
+            _mockSala.Setup(sala => sala.Disponibilidade).Returns(false);
+            //_mockLivro.Object.Disponibilidade = false;
+
+            //Ação
+            Action acaoResultado = () => agendamento.Validar();
+
+            //Verificar
+            acaoResultado.Should().Throw<SalaIndisponivelException>();
         }
 
         [Test]
