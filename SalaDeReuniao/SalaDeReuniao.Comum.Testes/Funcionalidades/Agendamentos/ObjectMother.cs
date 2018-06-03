@@ -14,8 +14,8 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Agendamentos
         {
             return new Agendamento
             {
-                HoraInicial = DateTime.Now.AddHours(2),
-                HoraFinal = DateTime.Now.AddHours(4)
+                HoraInicial = DateTime.Now.AddHours(1),
+                HoraFinal = DateTime.Now.AddHours(2)
             };
         }
 
@@ -23,8 +23,8 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Agendamentos
         {
             return new Agendamento
             {
-                HoraInicial = DateTime.Now.AddHours(-2),
-                HoraFinal = DateTime.Now.AddHours(4)
+                HoraInicial = DateTime.Now.AddHours(-1),
+                HoraFinal = DateTime.Now.AddHours(2)
             };
         }
 
@@ -32,8 +32,8 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Agendamentos
         {
             return new Agendamento
             {
-                HoraInicial = DateTime.Now.AddHours(2),
-                HoraFinal = DateTime.Now.AddHours(-4)
+                HoraInicial = DateTime.Now.AddHours(1),
+                HoraFinal = DateTime.Now.AddHours(-2)
             };
         }
 
@@ -50,8 +50,8 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Agendamentos
         {
             return new Agendamento
             {
-                HoraInicial = DateTime.Now.AddHours(2),
-                HoraFinal = DateTime.Now.AddHours(4),
+                HoraInicial = DateTime.Now.AddHours(1),
+                HoraFinal = DateTime.Now.AddHours(2),
                 Funcionario = null
             };
         }
@@ -60,8 +60,8 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Agendamentos
         {
             return new Agendamento
             {
-                HoraInicial = DateTime.Now.AddHours(2),
-                HoraFinal = DateTime.Now.AddHours(4),
+                HoraInicial = DateTime.Now.AddHours(1),
+                HoraFinal = DateTime.Now.AddHours(2),
                 Sala = null
             };
         }

@@ -48,6 +48,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Agendamentos\BaseSqlTeste.cs" />
+    <Compile Include="Base\Funcionarios\BaseSqlTeste.cs" />
+    <Compile Include="Base\Salas\BaseSqlTeste.cs" />
     <Compile Include="Funcionalidades\Agendamentos\ObjectMother.cs" />
     <Compile Include="Funcionalidades\Funcionarios\ObjectMother.cs" />
     <Compile Include="Funcionalidades\Salas\ObjectMother.cs" />
@@ -59,13 +62,15 @@
   <ItemGroup>
     <Content Include="DbScript.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Base\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SalaDeReuniao.Dominio\SalaDeReuniao.Dominio.csproj">
       <Project>{CB094A64-2F3B-404A-AE13-EA29E0BF45CA}</Project>
       <Name>SalaDeReuniao.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SalaDeReuniao.Infra\SalaDeReuniao.Infra.csproj">
+      <Project>{0FF14047-5DCF-4FF2-8FDB-FA58771DDA61}</Project>
+      <Name>SalaDeReuniao.Infra</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

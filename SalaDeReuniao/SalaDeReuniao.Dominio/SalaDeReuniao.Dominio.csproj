@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Excecoes\ExcecaoDeNegocio.cs" />
+    <Compile Include="Excecoes\IdentificadorIndefinidoException.cs" />
     <Compile Include="Funcionalidades\Agendamentos\Agendamento.cs" />
     <Compile Include="Funcionalidades\Agendamentos\Excecoes\FuncionarioNuloException.cs" />
     <Compile Include="Funcionalidades\Agendamentos\Excecoes\HoraFinalInvalidaException.cs" />

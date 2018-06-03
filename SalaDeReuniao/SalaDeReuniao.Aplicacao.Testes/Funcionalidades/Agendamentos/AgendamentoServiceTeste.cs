@@ -41,7 +41,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Sala = sala;
 
             //Ação
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = sala});
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala});
             Agendamento retorno = _agendamentoService.Adicionar(agendamento);
 
             //Verificar
@@ -64,7 +64,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(-1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 
             //Ação
             Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
@@ -87,7 +87,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 
             //Ação
             Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
@@ -110,7 +110,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 
             //Ação
             Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
@@ -130,7 +130,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Id = 0;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = null, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = null, Sala = sala });
 
             //Ação
             Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
@@ -150,7 +150,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Id = 0;
             agendamento.Funcionario = funcionario;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = null });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = null });
 
             //Ação
             Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
@@ -173,7 +173,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(new Agendamento { Id = agendamento.Id, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(new Agendamento { Id = agendamento.Id, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 
             //Ação
             Agendamento retorno = _agendamentoService.Atualizar(agendamento);
@@ -213,7 +213,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Obter(agendamento.Id)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(2), HoraFinal = DateTime.Now.AddHours(4), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Obter(agendamento.Id)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 
             //Ação
             Agendamento retorno = _agendamentoService.Obter(agendamento.Id);

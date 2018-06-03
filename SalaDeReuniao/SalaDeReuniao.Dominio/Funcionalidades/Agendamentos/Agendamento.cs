@@ -19,10 +19,10 @@ namespace SalaDeReuniao.Dominio.Funcionalidades.Agendamentos
 
         public void Validar()
         {
-            if (HoraInicial.Hour == DateTime.Now.AddHours(-2).Hour)
+            if (HoraInicial.Hour == DateTime.Now.AddHours(-1).Hour)
                 throw new HoraInicialInvalidaException();
 
-            if (HoraFinal.Hour == DateTime.Now.AddHours(-4).Hour)
+            if (HoraFinal.Hour == DateTime.Now.AddHours(-2).Hour)
                 throw new HoraFinalInvalidaException();
 
             if (HoraFinal.Hour < HoraInicial.Hour)
