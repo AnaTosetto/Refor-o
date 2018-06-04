@@ -269,5 +269,27 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
 
             _mockAgendamentoRepositorio.Verify(rp => rp.ObterTudo());
         }
+
+        [Test]
+        public void AgendamentoService_VerificarSalaDisponivel_DeveSerValido()
+        {
+            //Cenário
+            Funcionario funcionario = new Funcionario();
+            funcionario.Id = 1;
+            Sala sala = new Sala();
+            sala.Id = 1;
+            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
+            agendamento.Id = 1;
+            agendamento.Funcionario = funcionario;
+            agendamento.Sala = sala;
+            agendamento.Sala.Disponibilidade = true;
+
+            _mockAgendamentoRepositorio.Setup(rp => rp.VerificarSalaDisponivel(agendamento)).Returns(false);
+
+            var resultado = _agendamentoService.VerificarSalaDisponivel(agendamento);
+
+            resultado.Should().Be(false);
+
+        }
     }
 }

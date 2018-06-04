@@ -80,6 +80,23 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Agendamentos
             return Db.GetAll<Agendamento>(_sqlObterTudo, Make);
         }
 
+        public bool VerificarSalaDisponivel(Agendamento agendamento)
+        {
+            IEnumerable<Agendamento> lista = ObterTudo();
+
+            foreach (Agendamento a in lista)
+            {
+                if(agendamento.Sala == a.Sala)
+                {
+                    if(agendamento.HoraInicial == a.HoraInicial)
+                    {
+                        return true; //Sala ocupada
+                    }                   
+                }
+            }
+            return false;
+        }
+
         private object[] Take(Agendamento agendamento)
         {
             return new object[]
@@ -107,5 +124,6 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Agendamentos
                 Id = Convert.ToInt32(reader["FuncionarioId"]),
             }
         };
+
     }
 }

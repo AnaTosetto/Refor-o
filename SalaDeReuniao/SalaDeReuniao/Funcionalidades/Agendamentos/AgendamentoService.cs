@@ -45,5 +45,10 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
         {
             return _agendamentoRepositorio.ObterTudo();
         }
+
+        public bool VerificarSalaDisponivel(Agendamento agendamento)
+        {
+            return _agendamentoRepositorio.VerificarSalaDisponivel(agendamento);
+        }
     }
 }

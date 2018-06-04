@@ -9,5 +9,6 @@ namespace SalaDeReuniao.Dominio.Funcionalidades.Agendamentos
 {
     public interface IAgendamentoRepositorio : IRepositorio<Agendamento>
     {
+        bool VerificarSalaDisponivel(Agendamento agendamento);
     }
 }

@@ -168,5 +168,22 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
             listaAgendamento.Should().NotBeNull();
             listaAgendamento.First<Agendamento>().Id.Should().Be(1);
         }
+
+        [Test]
+        public void AgendamentoRepositorio_VerificarSalaDisponivel_DeveSerValido()
+        {
+            Sala sala = new Sala();
+            sala.Id = 1;
+            sala.Disponibilidade = true;
+            Funcionario funcionario = new Funcionario();
+            funcionario.Id = 1;
+            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
+            agendamento.Id = 1;
+
+            var resultado = _agendamentoRepositorio.VerificarSalaDisponivel(agendamento);
+
+            resultado.Should().Be(false);
+        }
+
     }
 }
