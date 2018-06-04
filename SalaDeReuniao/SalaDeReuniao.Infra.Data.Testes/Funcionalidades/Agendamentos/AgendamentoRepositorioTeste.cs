@@ -45,6 +45,10 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
 
             //Verificar
             agendamento.Id.Should().BeGreaterThan(0);
+
+            IEnumerable<Agendamento> agendamentoGetAll = _agendamentoRepositorio.ObterTudo();
+            agendamentoGetAll.First<Agendamento>().HoraInicial.Should().NotBe(agendamento.HoraInicial);
+            agendamentoGetAll.First<Agendamento>().HoraFinal.Should().NotBe(agendamento.HoraFinal);
         }
 
         [Test]
