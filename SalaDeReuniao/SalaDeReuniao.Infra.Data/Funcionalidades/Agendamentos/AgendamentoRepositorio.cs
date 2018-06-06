@@ -40,61 +40,23 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Agendamentos
         public Agendamento Atualizar(Agendamento agendamento)
         {
             agendamento.Validar();
-            if(agendamento.Id > 0)
-            {
-                Db.Update(_sqlEditar, Take(agendamento));
-                return agendamento;
-            }
-            else
-            {
-                throw new IdentificadorIndefinidoException();
-            }
+            Db.Update(_sqlEditar, Take(agendamento));
+            return agendamento;
         }
 
         public void Excluir(Agendamento agendamento)
         {
-            if(agendamento.Id > 0)
-            {
-                Db.Delete(_sqlExcluir, Take(agendamento));
-            }
-            else
-            {
-                throw new IdentificadorIndefinidoException();
-            }
+            Db.Delete(_sqlExcluir, Take(agendamento));
         }
 
         public Agendamento Obter(int id)
         {
-            if(id > 0)
-            {
-                return Db.Get<Agendamento>(_sqlObter, Make, new object[] { "@Id", id });
-            }
-            else
-            {
-                throw new IdentificadorIndefinidoException();
-            }
+            return Db.Get<Agendamento>(_sqlObter, Make, new object[] { "@Id", id });
         }
 
         public IEnumerable<Agendamento> ObterTudo()
         {
             return Db.GetAll<Agendamento>(_sqlObterTudo, Make);
-        }
-
-        public bool VerificarSalaDisponivel(Agendamento agendamento)
-        {
-            IEnumerable<Agendamento> lista = ObterTudo();
-
-            foreach (Agendamento a in lista)
-            {
-                if(agendamento.Sala == a.Sala)
-                {
-                    if(agendamento.HoraInicial == a.HoraInicial)
-                    {
-                        return true; //Sala ocupada
-                    }                   
-                }
-            }
-            return false;
         }
 
         private object[] Take(Agendamento agendamento)

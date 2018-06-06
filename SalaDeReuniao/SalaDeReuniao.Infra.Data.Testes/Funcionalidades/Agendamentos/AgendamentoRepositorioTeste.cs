@@ -73,27 +73,6 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
         }
 
         [Test]
-        public void AgendamentoRepositorio_Atualizar_DeveRetornarExcecao()
-        {
-            //Cenário
-            Sala sala = new Sala();
-            sala.Id = 1;
-            sala.Disponibilidade = true;
-            Funcionario funcionario = new Funcionario();
-            funcionario.Id = 1;
-            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 0;
-            agendamento.Funcionario = funcionario;
-            agendamento.Sala = sala;
-
-            //Ação
-            Action acaoResultado = () => _agendamentoRepositorio.Atualizar(agendamento);
-
-            //Verificar
-            acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
-        }
-
-        [Test]
         public void AgendamentoRepositorio_Excluir_DeveSerValido()
         {
             //Cenário
@@ -111,26 +90,6 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
         }
 
         [Test]
-        public void AgendamentoRepositorio_Excluir_DeveRetornarExcecao()
-        {
-            //Cenário
-            Sala sala = new Sala();
-            sala.Id = 1;
-            Funcionario funcionario = new Funcionario();
-            funcionario.Id = 1;
-            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 0;
-            agendamento.Funcionario = funcionario;
-            agendamento.Sala = sala;
-
-            //Ação
-            Action acaoResultado = () => _agendamentoRepositorio.Excluir(agendamento);
-
-            //Verificar
-            acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
-        }
-
-        [Test]
         public void AgendamentoRepositorio_Obter_DeveSerValido()
         {
             //Cenário
@@ -139,20 +98,6 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
 
             //Ação
             agendamento = _agendamentoRepositorio.Obter(agendamento.Id);
-        }
-
-        [Test]
-        public void AgendamentoRepositorio_Obter_DeveRetornarExcecao()
-        {
-            //Cenário
-            Agendamento agendamento = new Agendamento();
-            agendamento.Id = 0;
-
-            //Ação
-            Action acaoResultado = () => _agendamentoRepositorio.Obter(agendamento.Id);
-
-            //Verificar
-            acaoResultado.Should().Throw<IdentificadorIndefinidoException>();
         }
 
         [Test]
@@ -167,22 +112,6 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
             //Verificar
             listaAgendamento.Should().NotBeNull();
             listaAgendamento.First<Agendamento>().Id.Should().Be(1);
-        }
-
-        [Test]
-        public void AgendamentoRepositorio_VerificarSalaDisponivel_DeveSerValido()
-        {
-            Sala sala = new Sala();
-            sala.Id = 1;
-            sala.Disponibilidade = true;
-            Funcionario funcionario = new Funcionario();
-            funcionario.Id = 1;
-            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 1;
-
-            var resultado = _agendamentoRepositorio.VerificarSalaDisponivel(agendamento);
-
-            resultado.Should().Be(false);
         }
 
     }
