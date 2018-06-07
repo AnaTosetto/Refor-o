@@ -11,7 +11,7 @@ namespace SalaDeReuniao.Comum.Testes.Base.Salas
     {
         private const string RECREATE_SALA_TABLE = "TRUNCATE TABLE Agendamento; DELETE FROM Sala DBCC CHECKIDENT('Sala', RESEED, 0)";
 
-        private const string INSERT_SALA = "INSERT INTO Sala(Nome, Lugar, Disponibilidade) VALUES ('Sala de reunião', 4, 1)";
+        private const string INSERT_SALA = "INSERT INTO Sala(Nome, Lugar) VALUES ('Sala de reunião', 4)";
 
         public static void SeedDatabase()
         {

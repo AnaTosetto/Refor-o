@@ -32,7 +32,6 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
@@ -57,7 +56,6 @@ namespace SalaDeReuniao.Infra.Data.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();

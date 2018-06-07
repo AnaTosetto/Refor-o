@@ -1,5 +1,6 @@
 ﻿using SalaDeReuniao.Dominio.Excecoes;
 using SalaDeReuniao.Dominio.Funcionalidades.Agendamentos;
+using SalaDeReuniao.Dominio.Funcionalidades.Agendamentos.Excecoes;
 using SalaDeReuniao.Funcionalidades.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
         public Agendamento Adicionar(Agendamento agendamento)
         {
             agendamento.Validar();
+            VerificarSalaDisponivel(agendamento);
 
             return _agendamentoRepositorio.Adicionar(agendamento);
         }
@@ -28,6 +30,7 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
         public Agendamento Atualizar(Agendamento agendamento)
         {
             agendamento.Validar();
+            VerificarSalaDisponivel(agendamento);
 
             if (agendamento.Id < 1)
                 throw new IdentificadorIndefinidoException();
@@ -56,7 +59,7 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
             return _agendamentoRepositorio.ObterTudo();
         }
 
-        public bool VerificarSalaDisponivel(Agendamento agendamento)
+        public void VerificarSalaDisponivel(Agendamento agendamento)
         {
             IEnumerable<Agendamento> lista = _agendamentoRepositorio.ObterTudo();
 
@@ -64,13 +67,19 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
             {
                 if (agendamento.Sala == a.Sala)
                 {
-                    if (agendamento.HoraInicial == a.HoraInicial)
+                    if (agendamento.HoraInicial.Day == a.HoraInicial.Day)
                     {
-                        return true; //Sala ocupada
+                        if (agendamento.HoraInicial.Hour == a.HoraInicial.Hour
+                            || (agendamento.HoraInicial.Hour > a.HoraInicial.Hour && agendamento.HoraInicial.Hour < a.HoraFinal.Hour)
+                            || (agendamento.HoraInicial.Hour < a.HoraInicial.Hour && agendamento.HoraFinal.Hour > a.HoraInicial.Hour)
+                            || (agendamento.HoraFinal.Hour > a.HoraFinal.Hour && agendamento.HoraInicial.Hour < a.HoraFinal.Hour)
+                            || (agendamento.HoraFinal.Hour < a.HoraFinal.Hour && agendamento.HoraFinal.Hour > a.HoraInicial.Hour)
+                            || (agendamento.HoraInicial.Hour < a.HoraInicial.Hour && agendamento.HoraFinal.Hour > a.HoraFinal.Hour)
+                            )
+                            throw new SalaIndisponivelException();
                     }
                 }
             }
-            return false;
         }
     }
 }

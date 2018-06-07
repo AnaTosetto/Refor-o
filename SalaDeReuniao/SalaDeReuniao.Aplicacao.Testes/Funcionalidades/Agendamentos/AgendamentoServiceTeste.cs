@@ -40,10 +40,18 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
-            agendamento.Sala.Disponibilidade = true;
 
-            //Ação
+            Agendamento novoAgendamento = new Agendamento();
+            novoAgendamento.Id = 2;
+            novoAgendamento.HoraInicial = DateTime.Now.AddHours(3);
+            novoAgendamento.HoraFinal = DateTime.Now.AddHours(4);
+            novoAgendamento.Sala = sala;
+            novoAgendamento.Funcionario = funcionario;
+            
             _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.ObterTudo()).Returns(new List<Agendamento> {novoAgendamento});
+            
+            //Ação
             Agendamento retorno = _agendamentoService.Adicionar(agendamento);
 
             //Verificar
@@ -54,7 +62,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
         }
 
         [Test]
-        public void AgendamentoService_Adicionar_SalaIndisponivelParaAgendamento_DeveRetornarExcecao()
+        public void AgendamentoService_Adicionar_SalaIndisponivel_DeveRetornarExcecao()
         {
             //Cenário
             Funcionario funcionario = new Funcionario();
@@ -62,19 +70,23 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             Sala sala = new Sala();
             sala.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 0;
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
-            agendamento.Sala.Disponibilidade = false;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Adicionar(agendamento)).Returns(new Agendamento { Id = 1, HoraInicial = DateTime.Now.AddHours(-1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
+            Agendamento novoAgendamento = new Agendamento();
+            novoAgendamento.Id = 2;
+            novoAgendamento.HoraInicial = DateTime.Now.AddHours(1);
+            novoAgendamento.HoraFinal = DateTime.Now.AddHours(3);
+            novoAgendamento.Sala = sala;
+            novoAgendamento.Funcionario = funcionario;
+
+            _mockAgendamentoRepositorio.Setup(rp => rp.ObterTudo()).Returns(new List<Agendamento> { novoAgendamento });
 
             //Ação
-            Action acaoRetorno = () => _agendamentoService.Adicionar(agendamento);
+            Action acaoResultado = () => _agendamentoService.Adicionar(agendamento);
 
             //Verificar
-            acaoRetorno.Should().Throw<SalaIndisponivelException>();
-            _mockAgendamentoRepositorio.VerifyNoOtherCalls();
+            acaoResultado.Should().Throw<SalaIndisponivelException>();
         }
 
         [Test]
@@ -198,9 +210,16 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Id = 1;
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
-            agendamento.Sala.Disponibilidade = true;
+
+            Agendamento novoAgendamento = new Agendamento();
+            novoAgendamento.Id = 2;
+            novoAgendamento.HoraInicial = DateTime.Now.AddHours(2);
+            novoAgendamento.HoraFinal = DateTime.Now.AddHours(3);
+            novoAgendamento.Sala = sala;
+            novoAgendamento.Funcionario = funcionario;
 
             _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(new Agendamento { Id = agendamento.Id, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.ObterTudo()).Returns(new List<Agendamento> { novoAgendamento });
 
             //Ação
             Agendamento retorno = _agendamentoService.Atualizar(agendamento);
@@ -212,7 +231,36 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
         }
 
         [Test]
-        public void AgendamentoService_Atualizar_DeveRetornarExcecao()
+        public void AgendamentoService_Atualizar_SalaIndisponivel_DeveRetornarExcecao()
+        {
+            //Cenário
+            Funcionario funcionario = new Funcionario();
+            funcionario.Id = 1;
+            Sala sala = new Sala();
+            sala.Id = 1;
+            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
+            agendamento.Id = 1;
+            agendamento.Funcionario = funcionario;
+            agendamento.Sala = sala;
+
+            Agendamento novoAgendamento = new Agendamento();
+            novoAgendamento.Id = 2;
+            novoAgendamento.HoraInicial = DateTime.Now.AddHours(1);
+            novoAgendamento.HoraFinal = DateTime.Now.AddHours(3);
+            novoAgendamento.Sala = sala;
+            novoAgendamento.Funcionario = funcionario;
+
+            _mockAgendamentoRepositorio.Setup(rp => rp.ObterTudo()).Returns(new List<Agendamento> { novoAgendamento });
+
+            //Ação
+            Action acaoResultado = () => _agendamentoService.Atualizar(agendamento);
+
+            //Verificar
+            acaoResultado.Should().Throw<SalaIndisponivelException>();
+        }
+
+        [Test]
+        public void AgendamentoService_Atualizar_IdentificadorIndefinido_DeveRetornarExcecao()
         {
             //Cenário
             Funcionario funcionario = new Funcionario();
@@ -223,7 +271,6 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Id = 0;
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
-            agendamento.Sala.Disponibilidade = true;
 
             _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(new Agendamento { Id = agendamento.Id, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
 
@@ -252,7 +299,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
         }
 
         [Test]
-        public void AgendamentoService_Excluir_DeveRetornarExcecao()
+        public void AgendamentoService_Excluir_IdentificadorIndefinido_DeveRetornarExcecao()
         {
             //Cenário
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
@@ -293,7 +340,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
         }
 
         [Test]
-        public void AgendamentoService_Obter_DeveRetornarExcecao()
+        public void AgendamentoService_Obter_IdentificadorIndefinido_DeveRetornarExcecao()
         {
             //Cenário
             Funcionario funcionario = new Funcionario();
@@ -331,28 +378,6 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             }
 
             _mockAgendamentoRepositorio.Verify(rp => rp.ObterTudo());
-        }
-
-        [Test]
-        public void AgendamentoService_VerificarSalaDisponivel_DeveSerValido()
-        {
-            //Cenário
-            Funcionario funcionario = new Funcionario();
-            funcionario.Id = 1;
-            Sala sala = new Sala();
-            sala.Id = 1;
-            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 1;
-            agendamento.Funcionario = funcionario;
-            agendamento.Sala = sala;
-            agendamento.Sala.Disponibilidade = true;
-
-            _mockAgendamentoRepositorio.Setup(rp => rp.ObterTudo()).Returns(Enumerable.Empty<Agendamento>);
-
-            var resultado = _agendamentoService.VerificarSalaDisponivel(agendamento);
-
-            resultado.Should().Be(false);
-
         }
     }
 }

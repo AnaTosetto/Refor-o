@@ -12,7 +12,6 @@ namespace SalaDeReuniao.Dominio.Funcionalidades.Salas
         public int Id { get; set; }
         public string Nome { get; set; }
         public int Lugar { get; set; }
-        public virtual bool Disponibilidade { get; set; }
 
         public void Validar()
         {

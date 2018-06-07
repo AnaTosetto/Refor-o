@@ -34,7 +34,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
@@ -65,7 +64,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoInvalido_HoraInicialInvalida();
@@ -86,7 +84,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = false;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoInvalido_HoraFinalInvalida();
@@ -107,7 +104,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = false;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoInvalido_HoraFinalMenorQueHoraInicial();
@@ -128,7 +124,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = false;
             Agendamento agendamento = ObjectMother.ObterAgendamentoInvalido_FuncionarioNulo();
             agendamento.Id = 0;
             agendamento.Sala = sala;
@@ -168,7 +163,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
             agendamento.Id = 0;
             agendamento.Sala = sala;
-            agendamento.Sala.Disponibilidade = true;
             agendamento.Funcionario = funcionario;
 
             agendamento = _agendamentoService.Adicionar(agendamento);
@@ -199,7 +193,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
@@ -220,7 +213,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
@@ -244,7 +236,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
@@ -265,7 +256,6 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Cenário
             Sala sala = new Sala();
             sala.Id = 1;
-            sala.Disponibilidade = true;
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
 

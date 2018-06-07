@@ -33,7 +33,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
             Sala sala = ObjectMother.ObterSalaValida();
             sala.Id = 0;
 
-            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2, Disponibilidade = true });
+            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2});
 
             //Ação
             Sala retorno = _salaService.Adicionar(sala);
@@ -52,7 +52,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
             Sala sala = ObjectMother.ObterSalaInvalida_NomeNuloOuVazio();
             sala.Id = 0;
 
-            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2, Disponibilidade = true });
+            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2});
 
             //Ação
             Action acaoResultado = () => _salaService.Adicionar(sala);
@@ -69,7 +69,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
             Sala sala = ObjectMother.ObterSalaInvalida_LugarIgualAZero();
             sala.Id = 0;
 
-            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2, Disponibilidade = true });
+            _mockSalaRepositorio.Setup(rp => rp.Adicionar(sala)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2});
 
             //Ação
             Action acaoResultado = () => _salaService.Adicionar(sala);
@@ -86,7 +86,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
             Sala sala = ObjectMother.ObterSalaValida();
             sala.Id = 1;
 
-            _mockSalaRepositorio.Setup(rp => rp.Atualizar(sala)).Returns(new Sala { Id = sala.Id, Nome = "nome sala", Lugar = 2, Disponibilidade = true });
+            _mockSalaRepositorio.Setup(rp => rp.Atualizar(sala)).Returns(new Sala { Id = sala.Id, Nome = "nome sala", Lugar = 2});
 
             //Ação
             Sala retorno = _salaService.Atualizar(sala);
@@ -120,7 +120,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Salas
             Sala sala = ObjectMother.ObterSalaValida();
             sala.Id = 1;
 
-            _mockSalaRepositorio.Setup(rp => rp.Obter(sala.Id)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2, Disponibilidade = true });
+            _mockSalaRepositorio.Setup(rp => rp.Obter(sala.Id)).Returns(new Sala { Id = 1, Nome = "nome sala", Lugar = 2});
 
             //Ação
             Sala retorno = _salaService.Obter(sala.Id);

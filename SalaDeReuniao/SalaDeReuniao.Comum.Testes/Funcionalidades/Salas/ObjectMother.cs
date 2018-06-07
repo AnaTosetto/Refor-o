@@ -14,8 +14,7 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Salas
             return new Sala
             {
                 Nome = "nome da sala",
-                Lugar = 2,
-                Disponibilidade = true
+                Lugar = 2
             };
         }
 
@@ -24,8 +23,7 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Salas
             return new Sala
             {
                 Nome = "",
-                Lugar = 2,
-                Disponibilidade = true
+                Lugar = 2
             };
         }
 
@@ -34,8 +32,7 @@ namespace SalaDeReuniao.Comum.Testes.Funcionalidades.Salas
             return new Sala
             {
                 Nome = "nome da sala",
-                Lugar = 0,
-                Disponibilidade = true
+                Lugar = 0
             };
         }
     }

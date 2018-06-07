@@ -12,12 +12,12 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Salas
     public class SalaRepositorio : ISalaRepositorio
     {
         string _sqlInserir = @"INSERT INTO Sala
-                                (Nome, Lugar, Disponibilidade)
+                                (Nome, Lugar)
                               VALUES
-                                (@Nome, @Lugar, @Disponibilidade);";
+                                (@Nome, @Lugar);";
 
         string _sqlEditar = @"UPDATE Sala
-                                SET Nome = @Nome, Lugar = @Lugar, Disponibilidade = @Disponibilidade
+                                SET Nome = @Nome, Lugar = @Lugar
                                 WHERE Id = @Id";
 
         string _sqlExcluir = @"DELETE FROM Sala 
@@ -82,8 +82,7 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Salas
             {
                 "@Id", sala.Id,
                 "@Nome", sala.Nome,
-                "@Lugar", sala.Lugar,
-                "@Disponibilidade", sala.Disponibilidade
+                "@Lugar", sala.Lugar
             };
         }
 
@@ -92,8 +91,7 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Salas
             {
                 Id = Convert.ToInt32(reader["Id"]),
                 Nome = reader["Nome"].ToString(),
-                Lugar = Convert.ToInt32(reader["Lugar"]),
-                Disponibilidade = Convert.ToBoolean(reader["Disponibilidade"])
+                Lugar = Convert.ToInt32(reader["Lugar"])
             };
     }
 }

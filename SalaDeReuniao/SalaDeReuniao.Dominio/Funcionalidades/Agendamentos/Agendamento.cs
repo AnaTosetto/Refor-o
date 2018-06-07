@@ -31,8 +31,6 @@ namespace SalaDeReuniao.Dominio.Funcionalidades.Agendamentos
                 throw new FuncionarioNuloException();
             if (Sala == null)
                 throw new SalaNulaOuVaziaException();
-            if (Sala.Disponibilidade == false)
-                throw new SalaIndisponivelException();
         }
     }
 }
