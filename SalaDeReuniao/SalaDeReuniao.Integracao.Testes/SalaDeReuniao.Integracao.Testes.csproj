@@ -61,9 +61,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Funcionalidades\Agendamentos\AgendamentoIntegracaoSistema.cs" />
-    <Compile Include="Funcionalidades\Funcionarios\FuncionarioIntegracaoSistema.cs" />
-    <Compile Include="Funcionalidades\Salas\SalaIntegracaoSistema.cs" />
+    <Compile Include="Funcionalidades\Agendamentos\AgendamentoIntegracaoSistemaTeste.cs" />
+    <Compile Include="Funcionalidades\Funcionarios\FuncionarioIntegracaoSistemaTeste.cs" />
+    <Compile Include="Funcionalidades\Salas\SalaIntegracaoSistemaTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

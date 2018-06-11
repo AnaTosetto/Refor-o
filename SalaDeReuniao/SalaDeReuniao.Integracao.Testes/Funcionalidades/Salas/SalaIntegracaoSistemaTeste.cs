@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Salas
 {
-    public class SalaIntegracaoSistema
+    public class SalaIntegracaoSistemaTeste
     {
         SalaRepositorio _salaRepositorio = new SalaRepositorio();
 

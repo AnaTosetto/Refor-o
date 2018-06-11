@@ -42,9 +42,8 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Sala = sala;
 
             Agendamento novoAgendamento = new Agendamento();
-            novoAgendamento.Id = 2;
-            novoAgendamento.HoraInicial = DateTime.Now.AddHours(3);
-            novoAgendamento.HoraFinal = DateTime.Now.AddHours(4);
+            novoAgendamento.HoraInicial = DateTime.Now.AddHours(4);
+            novoAgendamento.HoraFinal = DateTime.Now.AddHours(5);
             novoAgendamento.Sala = sala;
             novoAgendamento.Funcionario = funcionario;
             
@@ -213,8 +212,8 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
 
             Agendamento novoAgendamento = new Agendamento();
             novoAgendamento.Id = 2;
-            novoAgendamento.HoraInicial = DateTime.Now.AddHours(2);
-            novoAgendamento.HoraFinal = DateTime.Now.AddHours(3);
+            novoAgendamento.HoraInicial = DateTime.Now.AddHours(3);
+            novoAgendamento.HoraFinal = DateTime.Now.AddHours(4);
             novoAgendamento.Sala = sala;
             novoAgendamento.Funcionario = funcionario;
 
@@ -272,7 +271,7 @@ namespace SalaDeReuniao.Aplicacao.Testes.Funcionalidades.Agendamentos
             agendamento.Funcionario = funcionario;
             agendamento.Sala = sala;
 
-            _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(new Agendamento { Id = agendamento.Id, HoraInicial = DateTime.Now.AddHours(1), HoraFinal = DateTime.Now.AddHours(2), Funcionario = funcionario, Sala = sala });
+            _mockAgendamentoRepositorio.Setup(rp => rp.Atualizar(agendamento)).Returns(agendamento);
 
             //Ação
             Action acaoResultado = () => _agendamentoService.Atualizar(agendamento);

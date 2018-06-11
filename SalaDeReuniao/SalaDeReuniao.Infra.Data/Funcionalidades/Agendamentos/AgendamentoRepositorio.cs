@@ -25,10 +25,36 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Agendamentos
         string _sqlExcluir = @"DELETE FROM Agendamento
                                 WHERE Id = @Id";
 
-        string _sqlObter = @"SELECT * FROM Agendamento
-                                WHERE Id = @Id";
+        string _sqlObter = @"SELECT 
+                                A.Id AS IdAgendamento,
+                                A.HoraInicial,
+                                A.HoraFinal,
+                                F.Id AS IdFuncionario,
+                                F.Nome AS NomeFuncionario,
+                                F.Cargo,
+                                F.Ramal,
+                                S.Id AS IdSala,
+                                S.Nome AS NomeSala,
+                                S.Lugar
+                                FROM Agendamento AS A
+                                INNER JOIN Funcionario AS F ON F.Id = A.FuncionarioId
+                                INNER JOIN Sala AS S ON S.Id = A.SalaId
+                                WHERE A.Id = @Id";
 
-        string _sqlObterTudo = @"SELECT * FROM Agendamento";
+        string _sqlObterTudo = @"SELECT 
+                                A.Id AS IdAgendamento,
+                                A.HoraInicial,
+                                A.HoraFinal,
+                                F.Id AS IdFuncionario,
+                                F.Nome AS NomeFuncionario,
+                                F.Cargo,
+                                F.Ramal,
+                                S.Id AS IdSala,
+                                S.Nome AS NomeSala,
+                                S.Lugar
+                                FROM Agendamento AS A
+                                INNER JOIN Funcionario AS F ON F.Id = A.FuncionarioId
+                                INNER JOIN Sala AS S ON S.Id = A.SalaId";
 
         public Agendamento Adicionar(Agendamento agendamento)
         {
@@ -51,7 +77,7 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Agendamentos
 
         public Agendamento Obter(int id)
         {
-            return Db.Get<Agendamento>(_sqlObter, Make, new object[] { "@Id", id });
+            return Db.Get(_sqlObter, Make, new object[] { "@Id", id });
         }
 
         public IEnumerable<Agendamento> ObterTudo()
@@ -74,16 +100,21 @@ namespace SalaDeReuniao.Infra.Data.Funcionalidades.Agendamentos
         private static Func<IDataReader, Agendamento> Make = reader =>
         new Agendamento
         {
-            Id = Convert.ToInt32(reader["Id"]),
+            Id = Convert.ToInt32(reader["IdAgendamento"]),
             HoraInicial = Convert.ToDateTime(reader["HoraInicial"]),
             HoraFinal = Convert.ToDateTime(reader["HoraFinal"]),
             Sala = new Sala
             {
-                Id = Convert.ToInt32(reader["SalaId"]),
+                Id = Convert.ToInt32(reader["IdSala"]),
+                Lugar = Convert.ToInt32(reader["Lugar"]),
+                Nome = Convert.ToString(reader["NomeSala"])
             },
             Funcionario = new Funcionario
             {
-                Id = Convert.ToInt32(reader["FuncionarioId"]),
+                Id = Convert.ToInt32(reader["IdFuncionario"]),
+                Ramal = Convert.ToString(reader["Ramal"]),
+                Nome = Convert.ToString(reader["NomeFuncionario"]),
+                Cargo = Convert.ToString(reader["Cargo"])
             }
         };
 

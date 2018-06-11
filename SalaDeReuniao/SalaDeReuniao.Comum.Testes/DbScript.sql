@@ -12,8 +12,7 @@ Ramal varchar(50) not null,
 create table Sala(
 Id int primary key identity(1,1) not null,
 Nome varchar(50) not null,
-Lugar int not null,
-Disponibilidade bit not null,
+Lugar int not null
 )
 
 create table Agendamento(

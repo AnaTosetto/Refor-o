@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
+using SalaDeReuniao.Comum.Testes.Base.Agendamentos;
 using SalaDeReuniao.Comum.Testes.Funcionalidades.Agendamentos;
 using SalaDeReuniao.Dominio.Excecoes;
 using SalaDeReuniao.Dominio.Funcionalidades.Agendamentos;
@@ -16,7 +17,7 @@ using System.Threading.Tasks;
 
 namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
 {
-    public class AgendamentoIntegracaoSistema
+    public class AgendamentoIntegracaoSistemaTeste
     {
         AgendamentoRepositorio _agendamentoRepositorio = new AgendamentoRepositorio();
 
@@ -25,6 +26,7 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
         [SetUp]
         public void TestSetup()
         {
+            BaseSqlTeste.SeedDatabase();
             _agendamentoService = new AgendamentoService(_agendamentoRepositorio);
         }
 
@@ -56,6 +58,18 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             agendamentoResultado.Id.Should().Be(agendamentoGet.Id);
 
             _agendamentoService.Excluir(agendamentoResultado);
+        }
+
+        [Test]
+        public void AgendamentoIntegracaoSistema_Adicionar_SalaIndisponivel_DeveRetornarExcecao()
+        {
+            Agendamento buscarAgendamento = _agendamentoService.Obter(1);
+
+            //Ação
+            Action acaoResultado = () => _agendamentoService.Adicionar(buscarAgendamento);
+
+            //Verificar
+            acaoResultado.Should().Throw<SalaIndisponivelException>();
         }
 
         [Test]
@@ -161,11 +175,9 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 0;
+            agendamento.Id = 1;
             agendamento.Sala = sala;
             agendamento.Funcionario = funcionario;
-
-            agendamento = _agendamentoService.Adicionar(agendamento);
 
             _agendamentoService.Obter(agendamento.Id);
 
@@ -185,6 +197,18 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             //Verificar
             agendamentoResultado.HoraInicial.Should().NotBe(horaInicialAntiga);
             agendamentoResultado.Id.Should().Be(agendamento.Id);
+        }
+
+        [Test]
+        public void AgendamentoIntegracaoSistema_Atualizar_SalaIndisponivel_DeveRetornarExcecao()
+        {
+            Agendamento buscarAgendamento = _agendamentoService.Obter(1);
+
+            //Ação
+            Action acaoResultado = () => _agendamentoService.Atualizar(buscarAgendamento);
+
+            //Verificar
+            acaoResultado.Should().Throw<SalaIndisponivelException>();
         }
 
         [Test]
@@ -216,11 +240,9 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
             Funcionario funcionario = new Funcionario();
             funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 0;
+            agendamento.Id = 1;
             agendamento.Sala = sala;
             agendamento.Funcionario = funcionario;
-
-            agendamento = _agendamentoService.Adicionar(agendamento);
 
             //Ação
             _agendamentoService.Excluir(agendamento);
@@ -234,14 +256,8 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
         public void AgendamentoIntegracaoSistema_Excluir_DeveRetornarExcecao()
         {
             //Cenário
-            Sala sala = new Sala();
-            sala.Id = 1;
-            Funcionario funcionario = new Funcionario();
-            funcionario.Id = 1;
             Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
             agendamento.Id = 0;
-            agendamento.Sala = sala;
-            agendamento.Funcionario = funcionario;
 
             //Ação
             Action acaoResultado = () => _agendamentoService.Excluir(agendamento);
@@ -254,17 +270,8 @@ namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Agendamentos
         public void AgendamentoIntegracaoSistema_Obter_DeveSerValido()
         {
             //Cenário
-            Sala sala = new Sala();
-            sala.Id = 1;
-            Funcionario funcionario = new Funcionario();
-            funcionario.Id = 1;
-
-            Agendamento agendamento = ObjectMother.ObterAgendamentoValido();
-            agendamento.Id = 0;
-            agendamento.Sala = sala;
-            agendamento.Funcionario = funcionario;
-
-            agendamento = _agendamentoService.Adicionar(agendamento);
+            Agendamento agendamento = new Agendamento();
+            agendamento.Id = 1;        
 
             //Ação
             agendamento = _agendamentoService.Obter(agendamento.Id);

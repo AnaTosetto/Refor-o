@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace SalaDeReuniao.Integracao.Testes.Funcionalidades.Funcionarios
 {
-    public class FuncionarioIntegracaoSistema
+    public class FuncionarioIntegracaoSistemaTeste
     {
         FuncionarioRepositorio _funcionarioRepositorio = new FuncionarioRepositorio();
 

@@ -65,7 +65,7 @@ namespace SalaDeReuniao.Funcionalidades.Agendamentos
 
             foreach (Agendamento a in lista)
             {
-                if (agendamento.Sala == a.Sala)
+                if (agendamento.Sala.Id == a.Sala.Id)
                 {
                     if (agendamento.HoraInicial.Day == a.HoraInicial.Day)
                     {
