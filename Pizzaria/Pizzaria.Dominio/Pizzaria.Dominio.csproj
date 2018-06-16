@@ -44,6 +44,9 @@
     <Compile Include="Enum\TipoEnum.cs" />
     <Compile Include="Excecoes\ExcecaoDeNegocio.cs" />
     <Compile Include="Funcionalidades\Entregas\Entrega.cs" />
+    <Compile Include="Funcionalidades\Entregas\Excecoes\NomeClienteNuloOuVazioExcecao.cs" />
+    <Compile Include="Funcionalidades\Entregas\Excecoes\SemPizzaExcecao.cs" />
+    <Compile Include="Funcionalidades\Entregas\Excecoes\ValorTotalMenorQueUmExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\NomeComMinimoDeCaracteresExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\NomeNuloOuVazioExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\QuantidadeDeFatiasMenorQueUmExcecao.cs" />
