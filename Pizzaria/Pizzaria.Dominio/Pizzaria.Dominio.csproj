@@ -43,14 +43,17 @@
     <Compile Include="Enum\TipoEntregaEnum.cs" />
     <Compile Include="Enum\TipoEnum.cs" />
     <Compile Include="Excecoes\ExcecaoDeNegocio.cs" />
+    <Compile Include="Excecoes\IdentificadorIndefinidoExcecao.cs" />
     <Compile Include="Funcionalidades\Entregas\Entrega.cs" />
     <Compile Include="Funcionalidades\Entregas\Excecoes\NomeClienteNuloOuVazioExcecao.cs" />
     <Compile Include="Funcionalidades\Entregas\Excecoes\SemPizzaExcecao.cs" />
     <Compile Include="Funcionalidades\Entregas\Excecoes\ValorTotalMenorQueUmExcecao.cs" />
+    <Compile Include="Funcionalidades\Interfaces\IRepositorio.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\NomeComMinimoDeCaracteresExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\NomeNuloOuVazioExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\QuantidadeDeFatiasMenorQueUmExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\SemIngredientesExcecao.cs" />
+    <Compile Include="Funcionalidades\Pizzas\IPizzaRepositorio.cs" />
     <Compile Include="Funcionalidades\Pizzas\Pizza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

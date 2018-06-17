@@ -40,11 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidades\Interfaces\IService.cs" />
+    <Compile Include="Funcionalidades\Pizzas\PizzaServico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Funcionalidades\Entregas\" />
-    <Folder Include="Funcionalidades\Pizzas\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pizzaria.Dominio\Pizzaria.Dominio.csproj">
+      <Project>{EE83CA05-7D43-4907-8FD2-6D06C6C41113}</Project>
+      <Name>Pizzaria.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
