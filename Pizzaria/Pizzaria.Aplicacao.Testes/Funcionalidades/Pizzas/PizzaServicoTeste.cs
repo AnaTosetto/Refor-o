@@ -18,7 +18,7 @@ namespace Pizzaria.Aplicacao.Testes.Funcionalidades.Pizzas
     [TestFixture]
     public class PizzaServicoTeste
     {
-        PizzaServico _pizzaServico;
+        private PizzaServico _pizzaServico;
 
         private Mock<IPizzaRepositorio> _mockPizzaRepositorio;
 

@@ -48,6 +48,7 @@
     <Compile Include="Funcionalidades\Entregas\Excecoes\NomeClienteNuloOuVazioExcecao.cs" />
     <Compile Include="Funcionalidades\Entregas\Excecoes\SemPizzaExcecao.cs" />
     <Compile Include="Funcionalidades\Entregas\Excecoes\ValorTotalMenorQueUmExcecao.cs" />
+    <Compile Include="Funcionalidades\Entregas\IEntregaRepositorio.cs" />
     <Compile Include="Funcionalidades\Interfaces\IRepositorio.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\NomeComMinimoDeCaracteresExcecao.cs" />
     <Compile Include="Funcionalidades\Pizzas\Excecoes\NomeNuloOuVazioExcecao.cs" />

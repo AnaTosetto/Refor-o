@@ -71,15 +71,14 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Funcionalidades\Entregas\EntregaServicoTeste.cs" />
     <Compile Include="Funcionalidades\Pizzas\PizzaServicoTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Funcionalidades\Entregas\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Pizzaria.Comum.Testes\Pizzaria.Comum.Testes.csproj">
       <Project>{4200E155-9312-444C-B8E3-B6B8DB348DD5}</Project>
