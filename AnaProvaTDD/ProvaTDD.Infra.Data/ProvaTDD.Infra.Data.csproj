@@ -30,7 +30,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +47,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\ProvaContexto.cs" />
+    <Compile Include="Funcionalidades\Alunos\AlunoConfiguracao.cs" />
+    <Compile Include="Funcionalidades\Alunos\AlunoRepositorio.cs" />
+    <Compile Include="Funcionalidades\Avaliacoes\AvaliacaoConfiguracao.cs" />
+    <Compile Include="Funcionalidades\Enderecos\EnderecoConfiguracao.cs" />
+    <Compile Include="Funcionalidades\Resultados\ResultadoConfiguracao.cs" />
+    <Compile Include="Migrations\201807152333306_ProvaTDD_v1.cs" />
+    <Compile Include="Migrations\201807152333306_ProvaTDD_v1.Designer.cs">
+      <DependentUpon>201807152333306_ProvaTDD_v1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProvaTDD.Dominio\ProvaTDD.Dominio.csproj">
+      <Project>{89C76B74-B67E-43BC-B8FA-349141F4624E}</Project>
+      <Name>ProvaTDD.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807152333306_ProvaTDD_v1.resx">
+      <DependentUpon>201807152333306_ProvaTDD_v1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

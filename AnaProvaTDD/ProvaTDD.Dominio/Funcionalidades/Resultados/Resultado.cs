@@ -1,4 +1,5 @@
-﻿using ProvaTDD.Dominio.Funcionalidades.Alunos;
+﻿using ProvaTDD.Dominio.Base;
+using ProvaTDD.Dominio.Funcionalidades.Alunos;
 using ProvaTDD.Dominio.Funcionalidades.Avaliacoes;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,10 @@ using System.Threading.Tasks;
 
 namespace ProvaTDD.Dominio.Funcionalidades.Resultados
 {
-    public class Resultado
+    public class Resultado : Entidade
     {
-        public int Id { get; set; }
         public double Nota { get; set; }
-        public Aluno Aluno { get; set; }
-        public Avaliacao Avaliacao { get; set; }
+        public virtual Aluno Aluno { get; set; }
+        public virtual Avaliacao Avaliacao { get; set; }
     }
 }

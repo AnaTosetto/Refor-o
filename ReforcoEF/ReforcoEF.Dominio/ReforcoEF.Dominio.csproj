@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{89C76B74-B67E-43BC-B8FA-349141F4624E}</ProjectGuid>
+    <ProjectGuid>{48BCA11D-5B25-4EF9-B552-B9656EF0145C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ProvaTDD.Dominio</RootNamespace>
-    <AssemblyName>ProvaTDD.Dominio</AssemblyName>
+    <RootNamespace>ReforcoEF.Dominio</RootNamespace>
+    <AssemblyName>ReforcoEF.Dominio</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,14 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\Entidade.cs" />
-    <Compile Include="Base\IRepositorio.cs" />
     <Compile Include="Funcionalidades\Alunos\Aluno.cs" />
     <Compile Include="Funcionalidades\Alunos\IAlunoRepositorio.cs" />
-    <Compile Include="Funcionalidades\Avaliacoes\Avaliacao.cs" />
-    <Compile Include="Funcionalidades\Avaliacoes\IAvaliacaoRepositorio.cs" />
     <Compile Include="Funcionalidades\Enderecos\Endereco.cs" />
-    <Compile Include="Funcionalidades\Enderecos\IEnderecoRepositorio.cs" />
+    <Compile Include="Funcionalidades\Materias\IMateriaRepositorio.cs" />
+    <Compile Include="Funcionalidades\Materias\Materia.cs" />
     <Compile Include="Funcionalidades\Resultados\IResultadoRepositorio.cs" />
     <Compile Include="Funcionalidades\Resultados\Resultado.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

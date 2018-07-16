@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaTDD.Infra.Data", "Prov
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{884E1692-F30C-4B5E-8676-EC425A8EE4D7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaTDD.Infra.Data.Testes", "ProvaTDD.Infra.Data.Testes\ProvaTDD.Infra.Data.Testes.csproj", "{02DFB4BD-5D8C-433B-90C4-846233AF3A09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{236E1F3F-BF94-417A-9499-CFD64D00F8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{236E1F3F-BF94-417A-9499-CFD64D00F8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{236E1F3F-BF94-417A-9499-CFD64D00F8A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02DFB4BD-5D8C-433B-90C4-846233AF3A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02DFB4BD-5D8C-433B-90C4-846233AF3A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02DFB4BD-5D8C-433B-90C4-846233AF3A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02DFB4BD-5D8C-433B-90C4-846233AF3A09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{89C76B74-B67E-43BC-B8FA-349141F4624E} = {33960631-F114-489E-B3FC-CC73971D7471}
 		{D3ADE071-3E21-4B62-90D2-76D4F92ED27A} = {C0EC5A71-3AE8-4E0B-A07D-BBE17CECB3CA}
 		{236E1F3F-BF94-417A-9499-CFD64D00F8A2} = {C0EC5A71-3AE8-4E0B-A07D-BBE17CECB3CA}
+		{02DFB4BD-5D8C-433B-90C4-846233AF3A09} = {884E1692-F30C-4B5E-8676-EC425A8EE4D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F85CAC8E-B45C-4153-8F9D-0BA41BB7A519}
